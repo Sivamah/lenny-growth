@@ -95,7 +95,7 @@ async function route(
   const url = new URL(req.url ?? "/", `http://${req.headers.host ?? "localhost"}`);
   const path = url.pathname;
 
-  if (method === "GET" && (path === "/" || path === "/v1/health")) {
+  if (method === "GET" && (path === "/" || path === "/v1/health" || path === "/health")) {
     if (path === "/" && method === "GET") {
       return json(res, 200, {
         service: SERVICE_NAME,

@@ -18,18 +18,18 @@ flowchart TB
     subgraph Client ["Frontend Tier (Port 5173)"]
         UI["React 19 + Vite UI\n(App, Composer, MessageBubble)"]
         AV["ArtifactViewer\n(Iframe sandbox='', strict CSP)"]
-        SSE["SSE Buffer Parser\n(/sessions/{id}/chat)"]
+        SSE["SSE Buffer Parser\n(POST /api/chat)"]
     end
 
     subgraph Backend ["FastAPI Backend (Port 8000)"]
-        API["FastAPI Routes\n(/sessions, /artifacts, /health, /config)"]
+        API["FastAPI Routes\n(/sessions, /artifacts, /health, /config, /api/chat)"]
         IR["Internal Retrieval Endpoint\n(POST /internal/retrieve [Token Auth])"]
         SAN["Sanitizer\n(Python Bleach HTML/MD Whitelist)"]
         CH["Chunker & Ingestion Engine\n(nomic-embed-text 768-dim)"]
     end
 
     subgraph AgentRuntime ["Agent Service (Port 8001)"]
-        AS["Node.js / Express Server\n(POST /chat, /essay, /artifact)"]
+        AS["Node.js / Fastify Runtime\n(POST /v1/turn, /v1/abort, GET /v1/health)"]
         ROUTE["Routing Engine\n(routing.ts -> general | transcript | follow_up)"]
         CONST["Constraint Engine\n(constraints.ts -> time, budget, maturity)"]
         PI["Pi Coding Agent Runtime\n(@earendil-works/pi-coding-agent)"]
@@ -212,12 +212,13 @@ erDiagram
 
 ### 5.2 Agent Service Endpoints (Port 8001)
 
-| Method | Path | Protocol | Description |
+| Method | Path | Protocol / Auth | Description |
 | :--- | :--- | :--- | :--- |
-| `GET` | `/health` | JSON | Agent runtime status, uptime, and memory usage. |
-| `POST` | `/chat` | NDJSON Stream | Executes conversation turn, handles tool calls, yields streamed chunks. |
-| `POST` | `/essay` | NDJSON Stream | Ship 30 for 30 structured essay generation turn. |
-| `POST` | `/artifact` | NDJSON Stream | Generates structured artifact deliverables with metadata. |
+| `GET` | `/` | JSON (Public) | Service identification, version, and endpoint manifest. |
+| `GET` | `/v1/health` | JSON (Public) | Comprehensive runtime health, uptime, Ollama model reachability, and active sessions. |
+| `POST` | `/v1/turn` | NDJSON Stream (`X-Internal-Token`) | Streaming execution of a conversation turn, handling dynamic tool routing, constraint enforcement, and optional skills (`ship30_essay`, `artifact`). |
+| `POST` | `/v1/abort` | JSON (`X-Internal-Token`) | Aborts an ongoing streaming turn for a specified session. |
+| `DELETE` | `/v1/sessions/{id}` | JSON (`X-Internal-Token`) | Evicts and disposes a session and its cached memory from the agent session pool. |
 
 ---
 
@@ -247,16 +248,17 @@ erDiagram
 
 ## 7. Transcript Source Rationale
 
-### The Question: Why use `LennysNewsletter/lennys-newsletterpodcastdata` instead of alternative repositories?
+### The Question: Why use `LennysNewsletter/lennys-newsletterpodcastdata` (and support `ChatPRD`)?
 
-The project ingests transcripts from the official starter dataset repository (`LennysNewsletter/lennys-newsletterpodcastdata`) using `scripts/fetch_transcripts.sh`. This architectural choice is driven by three essential factors:
+The assignment mentions `ChatPRD/lennys-podcast-transcripts`. This project defaults to `LennysNewsletter/lennys-newsletterpodcastdata` while supporting both datasets seamlessly via `scripts/fetch_transcripts.sh` (pass `--chatprd` for ChatPRD).
+
+The official starter pack was chosen as the default for three key reasons:
 
 1. **Licensing & Copyright Compliance**:
    - Lenny's Podcast transcripts are protected intellectual property. Lenny Rachitsky's official terms grant personal, non-commercial use for research while prohibiting raw redistribution in public git repositories.
    - Committing hundreds of raw transcript markdown files into a public repository violates redistribution terms. Instead, our project implements an automated, reproducible fetch script (`scripts/fetch_transcripts.sh`) that clones the data locally and adds `data/transcripts/` to `.gitignore`. This satisfies both reproducibility and legal licensing compliance.
 
 2. **Clean Structural Frontmatter & Metadata Integrity**:
-   - Alternative community scrapers often mangle speaker names, omit timestamps, or produce messy HTML artifacts.
    - The official dataset maintains consistent YAML frontmatter (`title`, `guest`, `date`, `url`) and standardized speaker markers:
      ```markdown
      **Lenny** (00:01:23): Welcome to the show.
@@ -264,8 +266,11 @@ The project ingests transcripts from the official starter dataset repository (`L
      ```
    - This allows our chunker (`backend/app/services/chunker.py`) to extract exact speaker attribution and minute-second timestamps without brittle regular expressions.
 
-3. **Deterministic Retrieval & Reliable Audio Anchors**:
+3. **Deterministic Retrieval & Audio-Aligned Citations**:
    - Because timestamps match the published podcast recordings, source citations rendered in the UI can direct users to the precise audio moment in the episode, creating a verified chain of custody for every claim.
+
+4. **Multi-Source Fetch Capability**:
+   - To accommodate evaluators using `ChatPRD/lennys-podcast-transcripts`, running `bash scripts/fetch_transcripts.sh --chatprd` pulls transcripts directly from the ChatPRD repository. Our ingestion engine (`backend/scripts/ingest.py`) parses any markdown transcript files adhering to this format.
 
 ---
 
@@ -304,43 +309,41 @@ The architecture employs defense-in-depth across both backend and frontend layer
 
 ## 9. Deployment & Orchestration
 
-The application is fully containerized via `docker-compose.yml`:
+The project uses a hybrid local development topology designed for fast iteration and debuggability:
+
+### 9.1 Database Container (`docker-compose.yml`)
+PostgreSQL 16 with `pgvector` runs via Docker Compose:
 
 ```yaml
 services:
   db:
     image: pgvector/pgvector:pg16
-    ports: ["5432:5432"]
+    container_name: lenny-growth-db
+    restart: unless-stopped
     environment:
-      POSTGRES_USER: lenny
-      POSTGRES_PASSWORD: lenny
-      POSTGRES_DB: lenny_growth
-    volumes: [postgres_data:/var/lib/postgresql/data]
+      POSTGRES_USER: ${POSTGRES_USER:-lenny}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lenny}
+      POSTGRES_DB: ${POSTGRES_DB:-lenny_growth}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-lenny} -d ${POSTGRES_DB:-lenny_growth}"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
 
-  backend:
-    build: { context: ./backend, dockerfile: Dockerfile }
-    ports: ["8000:8000"]
-    depends_on: [db]
-    environment:
-      DATABASE_URL: postgresql+asyncpg://lenny:lenny@db:5432/lenny_growth
-      AGENT_SERVICE_URL: http://agent-service:8001
-      INTERNAL_TOKEN: dev-internal-token
-      OLLAMA_BASE_URL: http://host.docker.internal:11434
-
-  agent-service:
-    build: { context: ./agent-service, dockerfile: Dockerfile }
-    ports: ["8001:8001"]
-    environment:
-      PORT: 8001
-      INTERNAL_TOKEN: dev-internal-token
-      BACKEND_URL: http://backend:8000
-      OLLAMA_BASE_URL: http://host.docker.internal:11434
-
-  frontend:
-    build: { context: ./frontend, dockerfile: Dockerfile }
-    ports: ["5173:5173"]
-    depends_on: [backend]
+volumes:
+  pgdata:
 ```
+
+### 9.2 Host Application Services
+The remaining services run natively on the host:
+- **FastAPI Backend**: Python 3.12 async service (`http://127.0.0.1:8000`)
+- **Agent Service**: Node.js 24 / TypeScript service (`http://127.0.0.1:8001`)
+- **Frontend SPA**: React 19 / Vite development server (`http://localhost:5173`)
+- **Ollama LLM Server**: Local inference host (`http://localhost:11434`)
 
 ### Resource Requirements & Prerequisites
 - **Local LLM Server**: Ollama running on host (`http://localhost:11434`).

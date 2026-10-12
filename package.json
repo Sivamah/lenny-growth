@@ -1,0 +1,26 @@
+{
+  "name": "lenny-growth-assistant-v2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lenny Growth Assistant V2 — Full-stack AI research workspace with React frontend and Node.js agent service.",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "workspaces": [
+    "frontend",
+    "agent-service"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev -w frontend",
+    "dev:agent": "npm run dev -w agent-service",
+    "start:agent": "npm start -w agent-service",
+    "build:frontend": "npm run build -w frontend",
+    "build": "npm run build -w frontend",
+    "typecheck:frontend": "npm run typecheck -w frontend",
+    "typecheck:agent": "npm run typecheck -w agent-service",
+    "typecheck": "npm run typecheck -w frontend && npm run typecheck -w agent-service",
+    "test:frontend": "npm test -w frontend",
+    "test:agent": "npm run test:unit -w agent-service",
+    "test": "npm test -w frontend && npm run test:unit -w agent-service"
+  }
+}

@@ -17,18 +17,20 @@ A production-grade, full-stack AI research workspace and growth assistant built 
 
 ---
 
-## Why This Project Uses `LennysNewsletter/lennys-newsletterpodcastdata`
+## Why This Project Uses `LennysNewsletter/lennys-newsletterpodcastdata` (and Supports `ChatPRD`)
 
-A key requirement of this project is responsible, high-fidelity transcript ingestion. The project uses the official starter dataset repository (`LennysNewsletter/lennys-newsletterpodcastdata`) rather than third-party scrapers or unverified repositories for three critical reasons:
+A key requirement of this project is responsible, high-fidelity transcript ingestion. The take-home assignment references `ChatPRD/lennys-podcast-transcripts`. This project defaults to the official starter dataset repository ([`LennysNewsletter/lennys-newsletterpodcastdata`](https://github.com/LennysNewsletter/lennys-newsletterpodcastdata)) while providing full compatibility with `ChatPRD/lennys-podcast-transcripts` via `scripts/fetch_transcripts.sh --chatprd`.
+
+The official starter dataset was chosen as the default for three verified reasons:
 
 1. **Copyright & Licensing Compliance**:
-   - Lenny's Podcast transcripts are proprietary intellectual property. Lenny Rachitsky's distribution terms grant personal, non-commercial use for research while strictly prohibiting raw redistribution in public git repositories.
-   - Committing raw transcript files directly into GitHub violates these redistribution terms. Instead, our project provides an automated, reproducible fetch script (`scripts/fetch_transcripts.sh`) that pulls the official files locally while ensuring `data/transcripts/` remains git-ignored.
-2. **Standardized Structural Frontmatter**:
-   - Alternative community scrapers often mangle speaker names, strip timestamps, or introduce web scraping noise.
+   - *Lenny's Podcast* transcripts are proprietary intellectual property. Lenny Rachitsky's official terms grant personal, non-commercial use for research while strictly prohibiting raw redistribution in public git repositories.
+   - Committing raw transcript files directly into GitHub violates these redistribution terms. Instead, our project provides an automated, reproducible fetch script (`scripts/fetch_transcripts.sh`) that pulls the permitted files locally while ensuring `data/transcripts/` remains git-ignored.
+2. **Standardized Structural Frontmatter & Audio Alignment**:
    - The official dataset provides consistent YAML frontmatter (`title`, `guest`, `date`, `url`) and clean speaker turns with timestamps (`**Speaker Name** (00:15:32):`).
-3. **Exact Audio Alignment & Verified Citations**:
    - Because the timestamps match the published podcast recordings, source citations rendered in the UI can direct users to the precise audio moment in the episode, creating a verified chain of custody for every claim.
+3. **Multi-Source Fetch Script**:
+   - If an evaluator prefers the `ChatPRD/lennys-podcast-transcripts` community repository named in the assignment prompt, running `bash scripts/fetch_transcripts.sh --chatprd` clones and populates the transcripts directly from `ChatPRD` without changing application code.
 
 ---
 
@@ -132,16 +134,21 @@ Launch PostgreSQL with pgvector using Docker Compose:
 # From project root
 docker compose up -d db
 ```
-*Default connection: `postgresql://lenny:lenny@localhost:5432/lenny_growth`*
-
-### Step 3: Fetch Transcripts & Ingest
-Fetch the official transcripts dataset and run vector ingestion:
+### Step 3: Install Node Dependencies (npm Workspaces)
+Install all frontend and agent-service dependencies from the repository root:
 ```bash
-# Option A: Run fetch script (Git Bash / WSL / Linux / macOS)
+npm install
+```
+*This resolves both workspaces into a single, authoritative root `package-lock.json`.*
+
+### Step 4: Fetch Transcripts & Ingest
+Fetch the transcripts dataset and run vector ingestion:
+```bash
+# Option A: Official starter pack (default, 10 curated growth episodes)
 bash scripts/fetch_transcripts.sh
 
-# Option B: Clone directly into data/transcripts
-git clone https://github.com/LennysNewsletter/lennys-newsletterpodcastdata.git data/transcripts
+# Option B: ChatPRD community repository referenced in the assignment
+bash scripts/fetch_transcripts.sh --chatprd
 
 # Run database migrations and vector ingestion
 cd backend
@@ -152,29 +159,29 @@ uv run python scripts/ingest.py
 cd ..
 ```
 
-### Step 4: Start Backend Services
+### Step 5: Start Backend Services
 In Terminal 1 (FastAPI Backend):
 ```bash
 cd backend
 uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 - API Docs: `http://127.0.0.1:8000/docs`
-- Health: `http://127.0.0.1:8000/health`
+- Health Check: `http://127.0.0.1:8000/health`
 
 In Terminal 2 (Agent Service):
 ```bash
-cd agent-service
-npm install
-npm start
+# From repository root
+npm run start:agent
+# or: npm start -w agent-service
 ```
-- Health: `http://127.0.0.1:8001/health`
+- Health Check: `http://127.0.0.1:8001/v1/health` (or `/health`)
 
-### Step 5: Start Frontend
+### Step 6: Start Frontend
 In Terminal 3 (React + Vite):
 ```bash
-cd frontend
-npm install
-npm run dev
+# From repository root
+npm run dev:frontend
+# or: npm run dev -w frontend
 ```
 - Web Application: `http://localhost:5173/`
 
@@ -184,25 +191,33 @@ npm run dev
 
 All subsystems contain comprehensive, passing automated test suites:
 
-### 1. Agent Service Tests
+### 1. Root Workspace Commands (Full Stack)
 ```bash
-cd agent-service
-npm run test:unit    # 101 unit tests across 18 test suites
-npm run typecheck    # 0 TypeScript diagnostics
+# Run typechecking across both frontend and agent-service
+npm run typecheck
+
+# Run test suites across both frontend and agent-service
+npm test
+
+# Build production bundle for frontend
+npm run build
 ```
 
-### 2. Frontend Tests
+### 2. Workspace-Specific Test Commands
 ```bash
-cd frontend
-npm test             # 31 passing Vitest tests
-npm run typecheck    # 0 TypeScript diagnostics
-npm run build        # Production bundle compiles cleanly
+# Frontend tests only (Vitest)
+npm test -w frontend
+npm run typecheck -w frontend
+
+# Agent Service unit tests only (102 tests across 18 test suites)
+npm run test:unit -w agent-service
+npm run typecheck -w agent-service
 ```
 
 ### 3. Backend Tests
 ```bash
 cd backend
-uv run python -m pytest tests -v   # 167 test items (165 passed, 2 skipped db-optional)
+uv run python -m pytest tests -v   # 167 passed test items
 ```
 
 ### 4. End-to-End Live Verification Scripts

@@ -172,8 +172,8 @@ Before running manual test scenarios, ensure that all services are operational:
     - A strong headline.
     - An engaging single-sentence hook.
     - 3 concise, punchy subheadings with bullet points.
-    - A 1-2 sentence concluding takeaway.
-  - Word count is within 200–350 words.
+    - An actionable takeaway closing section.
+  - Word count targets approximately 1,250 words (validator acceptance band: 800–2,200 words).
 
 ---
 

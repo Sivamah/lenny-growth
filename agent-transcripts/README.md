@@ -1,8 +1,8 @@
 # Genuine Agent Transcripts & Audit Log
 
-This directory contains unedited, authentic transcripts and diagnostic logs generated during the autonomous development, debugging, testing, and hardening of **Lenny Growth Assistant V2**.
+This directory contains genuine transcripts and diagnostic logs with sensitive information redacted (specifically local absolute Windows user paths and environment tokens), generated during the autonomous development, debugging, testing, and hardening of **Lenny Growth Assistant V2**.
 
-Per assignment guidelines, **zero synthetic or fabricated dialogues were created**. These transcripts were extracted directly from the local agent execution SQLite store (`opencode.db`) and IDE execution logs, with local absolute user paths sanitized to generic placeholders.
+Per assignment guidelines, **zero synthetic or fabricated dialogues were created**. These transcripts were extracted directly from the local agent execution SQLite store (`opencode.db`) and IDE execution logs, with local user paths sanitized to generic placeholders.
 
 ---
 

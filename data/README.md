@@ -20,16 +20,18 @@ is permitted. Because redistribution of the raw files is prohibited:
 
 ## Getting the data locally
 
-The intended reproducible path is:
+The intended reproducible paths are:
 
 ```bash
+# Option 1: Official starter dataset (default, curated 10 episodes)
 bash scripts/fetch_transcripts.sh
-```
 
-That script shallow-clones the official repo and copies a curated subset. **Note:** the
-build environment used for this checkpoint could not reach `github.com` (connection reset),
-so the transcripts were instead copied from an already-downloaded, permitted local copy of
-the same starter pack. The files are byte-identical to the official starter pack.
+# Option 2: ChatPRD community repository referenced in the assignment
+bash scripts/fetch_transcripts.sh --chatprd
+
+# Option 3: All official episodes
+bash scripts/fetch_transcripts.sh --all
+```
 
 After the files are present, ingest them:
 
