@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environment
+.venv/
+venv/
+
+# Local env
+.env
+.env.local
+
+# Local DB artifacts (should not be used; PostgreSQL is the real target)
+*.db

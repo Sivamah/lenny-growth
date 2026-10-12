@@ -1,0 +1,38 @@
+# Secrets / local env
+.env
+.env.local
+**/.env
+**/.env.local
+
+# Restricted corpus: raw Lenny's Podcast transcripts must never be committed.
+# See data/README.md (license prohibits redistributing the raw files).
+data/transcripts/
+data/transcripts/**
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+agent-service/agentdir/models-store.json
+poc/agentdir/models-store.json
+**/models-store.json
+
+# Logs
+*.log
+**/*.log
+
+# Frontend build output
+frontend/dist/
+
+# OS
+Thumbs.db
+.DS_Store
+

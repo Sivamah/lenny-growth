@@ -1,0 +1,30 @@
+{
+  "name": "lenny-agent-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Node/TypeScript agent service wrapping the Pi Coding Agent SDK for the Lenny Growth Assistant (Phase 1 skeleton).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test tests/routing.test.ts tests/session-history.test.ts tests/events.test.ts tests/tool.test.ts tests/essay.test.ts tests/artifact.test.ts tests/chat.test.ts tests/constraints.test.ts tests/response-quality.test.ts tests/ollama-turn.test.ts",
+    "test:unit": "node --import tsx --test tests/routing.test.ts tests/session-history.test.ts tests/events.test.ts tests/tool.test.ts tests/essay.test.ts tests/artifact.test.ts tests/chat.test.ts tests/constraints.test.ts tests/response-quality.test.ts",
+    "smoke": "tsx scripts/smoke-turn.ts",
+    "check": "tsx scripts/check.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "1.1.0",
+    "@earendil-works/pi-coding-agent": "1.1.0",
+    "dotenv": "^18.0.7",
+    "typebox": "1.3.27"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.2"
+  }
+}

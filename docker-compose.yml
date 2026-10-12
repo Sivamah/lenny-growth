@@ -1,0 +1,27 @@
+# Development database for Lenny Growth Assistant v2.
+#
+# Only the database runs in Docker; the FastAPI backend, the Node agent-service,
+# and Ollama all run natively on the host and connect to `localhost:5432`.
+# Credentials come from a git-ignored local `.env` (see `.env.example`); the
+# defaults match the backend's default DATABASE_URL so it works with no config.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: lenny-growth-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-lenny}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lenny}
+      POSTGRES_DB: ${POSTGRES_DB:-lenny_growth}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-lenny} -d ${POSTGRES_DB:-lenny_growth}"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  pgdata:

@@ -1,0 +1,22 @@
+{
+  "name": "lenny-pi-poc",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Phase 0: Pi Coding Agent SDK 1.1.0 compatibility PoC",
+  "type": "module",
+  "scripts": {
+    "poc:01": "tsx src/01-minimal.ts",
+    "poc:02": "tsx src/02-tool.ts",
+    "poc:03": "tsx src/03-ollama.ts",
+    "poc:04": "tsx src/04-anthropic.ts",
+    "poc:05": "tsx src/05-errors-abort.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "1.1.0",
+    "@earendil-works/pi-coding-agent": "1.1.0",
+    "typebox": "1.3.27"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
+  }
+}

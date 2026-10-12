@@ -1,0 +1,2462 @@
+[
+  {
+    "id": 1,
+    "category": "in-corpus",
+    "label": "in #1: What mistake do 99% of founders and sales reps make, according to Jaso",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "1 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "186 chars"
+      }
+    ],
+    "observed": {
+      "text": "According to Jason Lemkin, 99% of founders and sales reps make the mistake of not spending enough time learning the product, resulting in poor sales performance and missed opportunities.",
+      "citations": [
+        {
+          "guest": "Jason M Lemkin",
+          "episode": "We replaced our sales team with 20 AI agents—here’s what happened | Jason Lemkin (SaaStr)",
+          "timestamp": "00:23:38",
+          "url": null,
+          "snippet": "**Jason Lemkin** (00:23:38): Now, whether they carry a bag or whether what they do is they join calls with the reps, whether they backfill the reps, you want your VP of sales in deals 20, 30 hours a week when they start. I see VPs of sales today start, they're in no deals. I'll g",
+          "score": 0.7190382741735359
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 1,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.7190382741735359
+        }
+      }
+    },
+    "durationMs": 29693
+  },
+  {
+    "id": 2,
+    "category": "in-corpus",
+    "label": "in #2: How did Claude become the fastest-growing AI product, according to the",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "1 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "335 chars"
+      }
+    ],
+    "observed": {
+      "text": " According to the episode with Amol Avasare, Claude became the fastest-growing AI product through its growth acceleration platform CASH (Claude Accelerates Sustainable Hypergrowth), which automates gr",
+      "citations": [
+        {
+          "guest": "Amol Avasare",
+          "episode": "Anthropic’s $1B to $19B growth run: how Claude became the fastest-growing AI product in history | Amol Avasare",
+          "timestamp": "00:34:16",
+          "url": null,
+          "snippet": "**Amol Avasare** (00:34:16): So our growth platform team, we're very lucky we have Alexey Komissarouk who teaches growth engineering at Reforge, and he's just the guy on the team. And so he is driving this effort. The name is, it's a little cringey. I didn't come up with it. And ",
+          "score": 0.7133404183413551
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 1,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.7133404183413551
+        }
+      }
+    },
+    "durationMs": 17535
+  },
+  {
+    "id": 3,
+    "category": "in-corpus",
+    "label": "in #3: Why has distribution become the most important moat, according to Evan",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": false,
+        "detail": "grounded=null"
+      },
+      {
+        "check": "citations>=1",
+        "pass": false,
+        "detail": "0 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "112 chars"
+      }
+    ],
+    "observed": {
+      "text": "{\"name\":\"search_transcripts\",\"parameters={\"query\":\"Distribution as most important moat Evan Spiegel\",\"top_k\":1}}",
+      "citations": [],
+      "messageCount": 2,
+      "grounded": null,
+      "persisted": {
+        "role": "assistant",
+        "citations": 0,
+        "grounding": null
+      }
+    },
+    "durationMs": 4460
+  },
+  {
+    "id": 4,
+    "category": "in-corpus",
+    "label": "in #4: What are the five questions to ask when your product stops growing, ac",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "5 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "492 chars"
+      }
+    ],
+    "observed": {
+      "text": "According to Jason Cohen, when your product stops growing, you should ask yourself the following five questions:\n\n1. Are customers leaving (logo churn, churn within)?\n2. Is your pricing too low and ha",
+      "citations": [
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "01:19:04",
+          "url": null,
+          "snippet": "**Jason Cohen** (01:19:04): The last question is, do you need to grow? So okay, growth is stalled. And if we assume every question before has been answered in a satisfactory way, you could ask, \"Hey, is that a problem? What do we mean by grow? What do we need to do exactly?\" Now,",
+          "score": 0.777607593251318
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:01:07",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:01:07): The last question is, do you need to grow? We all have heard the phrase, \"If you're not growing, you're dying.\" Is that true or is that the kind of thing that investors use to make founders try to grow even when they shouldn't?\n\n**Lenny Rachitsky** (00",
+          "score": 0.7551920839342734
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "01:18:55",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (01:18:55): So just to summarize, logo retention, pricing, NRR, marketing, channel saturation. What comes next?\n\n**Jason Cohen** (01:19:04): The last question is, do you need to grow? So okay, growth is stalled. And if we assume every question before has been ",
+          "score": 0.7461314503990352
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:10:54",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:10:54): And so when I say that's what I've seen, that's the context of what I mean by what I've seen. So there's, I wouldn't say a checklist, but there's a series of questions that I asked to diagnose why is growth slowing in this order, because it's one of th",
+          "score": 0.7382741754430128
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:00:34",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (00:00:34): Step two is pricing, positioning.\n\n**Jason Cohen** (00:00:36): Your prices are way too low because you just guessed and you haven't changed them. What often happens is you raise prices and signups don't change. Just think about a company with a tho",
+          "score": 0.7188082579349818
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 5,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.777607593251318
+        }
+      }
+    },
+    "durationMs": 51984
+  },
+  {
+    "id": 5,
+    "category": "in-corpus",
+    "label": "in #5: How did HubSpot start, and what does Brian Halligan say about scaling ",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "10 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "180 chars"
+      }
+    ],
+    "observed": {
+      "text": "The quote from Brian Halligan about changing the company's culture and norms is: \"It's a really interesting of just how much work it takes to change culture, to change your norms.\"",
+      "citations": [
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:56:28",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:56:28): And at some point I was like, why are we spending so much time on employee net promoter scores? Let's say our employee net promoter score was 60, and our customer net promoter score is 25, I was like, we need to take... I would give up 10 points of ",
+          "score": 0.7248631379886592
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "01:01:38",
+          "url": null,
+          "snippet": "**Brian Halligan** (01:01:38): Well, you clicked on this earlier, but that inspiration thing. I have a little rubric where it's like, in the startup phase it's 90% perspiration, 10% inspiration. When you get the scale up phase, it's 90% inspiration, 10% perspiration. And over tim",
+          "score": 0.7214794754982815
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:50:44",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:50:44): Okay, EV is enterprise value, TV is your team's value, MEV is your value. And as HubSpot was scaling, and we had a lot of people who were VPs in different roles, and they started to get good-sized organizations, where they would fall down was they d",
+          "score": 0.7184376473539131
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:27:53",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:27:53): Well, if you look inside a typical enterprise, where's AI really working? Let's say inside of HubSpot. Software development is working incredibly well. Customer support, incredibly well. Legal starting to work incredibly well. But there really aren'",
+          "score": 0.7129385129140491
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:55:35",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:55:35): Okay. We were very employee-centric, more than customer-centric in the first several years of HubSpot. So much so that the company was number one on Glassdoor's best place to work, I was the number one CEO on Glassdoor, and as I look back at that, I",
+          "score": 0.7102458477021071
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:28:42",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:28:42): I think a lot about the go-to-market. I think the go-to-market is going to get turned on its head. When we started HubSpot, if I think of the way the funnel worked, you want to get found in Google, someone clicks on a blue link, they land on your we",
+          "score": 0.7082991103414654
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:26:18",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:26:18): And the flip side of that is, how many companies... The number of companies formed is going to mushroom over the next 10 years relative to the last 10 years, and the last 10 years compared to the previous 10 years is mushroomed. I just think in my l",
+          "score": 0.7019725264295072
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:57:22",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:57:22): And then, we still do this, we have a customer panel at our board meetings. Our whole board can ask questions. And my favorite question is, what do you love about HubSpot? And then... And then, what do you hate about HubSpot? And they kind of look a",
+          "score": 0.6959361019173609
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:42:16",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:42:16): I'll just follow on to, most of the good things that happened in HubSpot came out of a crisis because we would take pretty drastic measures to fix it and make sure we didn't do the same thing again. And so, in this particular case, we really rethoug",
+          "score": 0.6861944098861509
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:53:56",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (00:53:56): This is hard because people's performance reviews are based on their goals, KPIs, it's always like, here's what I got to drive. Other than putting posters on the wall, and this is our, just HubSpot growth above all is what matters, or our customers",
+          "score": 0.6791641925769516
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 10,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.7248631379886592
+        }
+      }
+    },
+    "durationMs": 98822
+  },
+  {
+    "id": 6,
+    "category": "in-corpus",
+    "label": "in #6: What does Eric Ries say about building a company that withstands any e",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "10 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "1757 chars"
+      }
+    ],
+    "observed": {
+      "text": "The topic of conversation in the provided transcript is building a company that can withstand any era, as discussed by Eric Ries, Lean Startup author. The discussion centers around the challenges of m",
+      "citations": [
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:58:31",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:58:31): Before the '80s, it was considered obvious. Our grandparents thought it was obvious. Our great-grandparents thought it was obvious. Adam Smith thought it was obvious. Everyone before thought it was obvious that corporations existed to pursue a specific t",
+          "score": 0.7539772038940333
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:06:37",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:06:37): Yeah, we all know this force. In the book, I call it the force that no one controls, but everyone obeys. That tends to drag organizations down into mediocrity to the point that we lose control of them. Now, sometimes we lose control of them because we ge",
+          "score": 0.7419705679382045
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:25:49",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:25:49): So I think it's really interesting that we have enough of these examples to know that there's nothing inevitable about this financial gravity. We actually have a dataset that can be studied. There's a whole branch of academic research that has shown, for",
+          "score": 0.7396272706541619
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:16:59",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:16:59): \"He told me I need to have mission protective provisions.\" He'll pat you on the head and be like, \"Oh, that's sweet, honey. That's great. Yeah, get product market fit, get some success. Success is ultimately your source of leverage. Success will protect ",
+          "score": 0.7314823937640654
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:01:02",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:01:02): Harder is easier. If you're willing to be principled in your decision making, you will get these unexpected rewards. But most leaders, when asked to defend their principles, can't do it because they've been taught ROI-based thinking, shareholder primacy,",
+          "score": 0.7310881294117596
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:34:10",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:34:10): Let's start with the principle I call harder is easier. This is the leadership principle that anybody can adopt. There's nobody who's not ... You tell me you have no power whatsoever. Everyone's got some influence. And if you have any influence at all, y",
+          "score": 0.7297131258078927
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "01:28:43",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (01:28:43): So there's a law firm called Virgil. They'll be happy to help you and they don't charge you by the hour. This is not the main thing that they do. They mostly do AI assisted back office acceleration, which is also very cool. But anyway, make sure you have",
+          "score": 0.7282036545944355
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:59:20",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:59:20): First of all, the board would be authorized to fight you to the death. They didn't have to say yes. They would do crazy stuff in the night. These battles were legendary. Some of them are hilarious what would go on between these people. But the second thi",
+          "score": 0.7281593087241849
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:55:36",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (00:55:36): Organizations, these two senses of the word become one. An organization that is weak cannot keep its promises because the person making the promise won't be there. Imagine you got a promise from the founders of Vectura that they'll never sell cigarettes ",
+          "score": 0.7269583885570705
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "01:22:34",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (01:22:34): That founder sounds invested. Just the kind of company I want to create.\" I'm like, \"Dude, you have not been listening to anything I'm saying. He doesn't work there anymore.\" He's like, \"Sol Price. This is not a party. This is awake.\" And he was like, \"W",
+          "score": 0.7249240867544777
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 10,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.7539772038940333
+        }
+      }
+    },
+    "durationMs": 65587
+  },
+  {
+    "id": 7,
+    "category": "in-corpus",
+    "label": "in #7: What does Marc Andreessen say about the AI boom?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "10 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "651 chars"
+      }
+    ],
+    "observed": {
+      "text": "According to Marc Andreessen, the real AI boom hasn't even started yet, and people are focusing too much on the surface-level things like using large language models for tasks like answering questions",
+      "citations": [
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:00:00",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:00:00): If we didn't have AI, we'd be in a panic right now about what's going to happen to the economy. We've actually been in a regime for 50 years of very slow technological change in the face of declining population growth. The timing has worked out mir",
+          "score": 0.6935871012703503
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:47:24",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:47:24): Oh yeah, totally. Again, if you want to be one of these super... Look, if you just want to put yourself on autopilot, and like, \"I can't be bothered. I'm just going to have AI write the code, and it's going to generate whatever it does and that's f",
+          "score": 0.671493809579327
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "01:01:06",
+          "url": null,
+          "snippet": "**Marc Andreessen** (01:01:06): And by the way, look, I mean, like everything I'm saying is... everything that we're saying right now also is the same as if you're working with human beings. If you and I are colleagues and I would ask you to do something, you'd come back with som",
+          "score": 0.6690374218270136
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:48:06",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:48:06): By the way, you also really deeply want to understand how the AI itself works, because you want to... If people understand how the AI works, they're clearly able to get more value out of it than somebody who doesn't understand how it works. You're ",
+          "score": 0.6677989957692616
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:07:53",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:07:53): Over the holiday break, it feels like the AI coding thing really hit critical mass and the world's best programmers, including Linus Torvalds, for the first time over the holiday break basically said, \"Yeah, AI is now coding better than we can.\" An",
+          "score": 0.6592009853364259
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:06:27",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:06:27): And so it's kind of like those three big mega things are all colliding at the same time. And I think we're probably just at the very beginning of all three of those. And those all feel like historical moment shifts, comparable in magnitude to maybe",
+          "score": 0.6581802368164249
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:58:37",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:58:37): That's right. That's right. And again, I can't overstress the following, for anybody listening to this, the thing about AI that I think people are just not getting enough benefit out of yet is just it will teach you. This is amazing. There's never ",
+          "score": 0.6574130825439353
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "01:27:02",
+          "url": null,
+          "snippet": "**Marc Andreessen** (01:27:02): I think this is where Linus Torvalds in particular was like, \"Yeah, okay, this thing is starting to generate better code than I can.\" Okay? So now we're going to have AI coders that are actually better coders than the best human coders. I think tha",
+          "score": 0.6541421346235096
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:10:11",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:10:11): And then there's this other just incredible thing that's happening, which is the demographic collapse, it's sort of a Western phenomenon and increasingly global phenomenon, which is the rate of reproduction of the human species is in rapid decline.",
+          "score": 0.6495193777749744
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "00:01:20",
+          "url": null,
+          "snippet": "**Marc Andreessen** (00:01:20): People who really want to improve themselves and develop their career should be spending every spare hour, in my view, at this point, talking to AI, being like, \"All right, train me up.\"\n\n**Lenny Rachitsky** (00:01:29): Today, my guest is Marc Andr",
+          "score": 0.649018052395987
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 10,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.6935871012703503
+        }
+      }
+    },
+    "durationMs": 44907
+  },
+  {
+    "id": 8,
+    "category": "in-corpus",
+    "label": "in #8: What is the hidden pattern behind successful products, according to Ma",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": false,
+        "detail": "grounded=null"
+      },
+      {
+        "check": "citations>=1",
+        "pass": false,
+        "detail": "0 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "135 chars"
+      }
+    ],
+    "observed": {
+      "text": "{\"name\":\"search_transcripts\",\"parameters\":{\"query\":\"\"hidden pattern behind successful products according to Mark Pincus\"\",\"top_k\":\"1\"}}",
+      "citations": [],
+      "messageCount": 2,
+      "grounded": null,
+      "persisted": {
+        "role": "assistant",
+        "citations": 0,
+        "grounding": null
+      }
+    },
+    "durationMs": 3237
+  },
+  {
+    "id": 9,
+    "category": "in-corpus",
+    "label": "in #9: What does Nikhyl Singhal say about product managers being in trouble?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "1 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "458 chars"
+      }
+    ],
+    "observed": {
+      "text": "The podcast episode on Nikhyl Singhal discusses how half of product managers are in trouble. According to Nikhyl Singhal, the traditional product management discipline was disrupted by the rise of int",
+      "citations": [
+        {
+          "guest": "Nikhyl Singhal",
+          "episode": "Why half of product managers are in trouble | Nikhyl Singhal (Meta, Google)",
+          "timestamp": "00:49:37",
+          "url": null,
+          "snippet": "**Nikhyl Singhal** (00:49:37): Well, and maybe there's a baby version of this that perhaps provides a bit more kind of solace and optimism. A baby version of this is that the way that people did, let's call it product management back in the day when HP, and Cisco, and AMD and the",
+          "score": 0.6895535876496204
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 1,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.6895535876496204
+        }
+      }
+    },
+    "durationMs": 20264
+  },
+  {
+    "id": 10,
+    "category": "in-corpus",
+    "label": "in #10: What does Elena Verna say about growth teams and metrics?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "1 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "463 chars"
+      }
+    ],
+    "observed": {
+      "text": "Elena Verna discusses growth teams and metrics in the context of her experience at Lovable, where she was able to achieve a fast ramp to 200 million ARR in under a year with fewer than 100 people. She",
+      "citations": [
+        {
+          "guest": "Elena Verna 4.0",
+          "episode": "Elena Verna 4.0",
+          "timestamp": "00:01:25",
+          "url": null,
+          "snippet": "**Elena Verna** (00:01:25): The only way to create a word of mouth loop is just to blow their socks off.\n\n**Lenny Rachitsky** (00:01:31): Today, my guest is Elena Verna, head of growth at Lovable. In under one year after launching, with fewer than 100 people, Lovable hit 200 mill",
+          "score": 0.7025251388551053
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 1,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.7025251388551053
+        }
+      }
+    },
+    "durationMs": 18827
+  },
+  {
+    "id": 11,
+    "category": "in-corpus",
+    "label": "in #11: What does the podcast say about replacing a sales team with AI agents?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "10 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "1055 chars"
+      }
+    ],
+    "observed": {
+      "text": "There is no clear answer to the question \"Is AI changing the definition of the product?\" in the provided transcript. However, there are some quotes that mention the potential impact of AI on the defin",
+      "citations": [
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:27:38",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (00:27:38): Along these lines, I saw you tweet this recently, where people talk about which jobs AI is going to replace, and you said that sales is maybe the last job AI will replace. Why do you think that's the case?\n\n**Brian Halligan** (00:27:53): Well, if y",
+          "score": 0.6954115214698612
+        },
+        {
+          "guest": "Elena Verna 4.0",
+          "episode": "Elena Verna 4.0",
+          "timestamp": "01:10:47",
+          "url": null,
+          "snippet": "**Elena Verna** (01:10:47): Now, I don't think AI is replacing everybody's job, so please don't look at it as that cliche saying. I actually often call AI as average intelligence that helps me get the platform up. And then I add my human thinking and my human creativity on top of",
+          "score": 0.6670159497809667
+        },
+        {
+          "guest": "Evan Spiegel",
+          "episode": "Snapchat CEO: Why distribution has become the most important moat | Evan Spiegel",
+          "timestamp": "00:47:19",
+          "url": null,
+          "snippet": "**Evan Spiegel** (00:47:19): So I think taking a step back, there's so much excitement around the way that AI is going to change the way that companies work. Obviously software companies in particular, like ours, I think are on the cutting edge of the way that AI is changing how ",
+          "score": 0.6656312549460954
+        },
+        {
+          "guest": "Elena Verna 4.0",
+          "episode": "Elena Verna 4.0",
+          "timestamp": "01:09:05",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (01:09:05): Not to throw them under the bus or anything. Although Google, very, very successful in AI now, maybe a less AI-focused company.\n\n**Elena Verna** (01:09:13): I really believe that there's different... You need to understand what's the environment th",
+          "score": 0.6594084121207255
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:32:15",
+          "url": null,
+          "snippet": "**Brian Halligan** (00:32:15): Honestly, the only thing that's different today, it's exactly the same as it's been for 100 years, except they call their SCs or their system consultants for deployed engineers. The rest of it is the same. I thought it would be totally different in ",
+          "score": 0.6507984040264166
+        },
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "01:11:22",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (01:11:22): But I think where we will get to one way or another is that there will be some kind of consumer facing platform for AI apps and agents. I can see so many consumer facing agentic services that make so much sense to me that I think consumers will want, b",
+          "score": 0.6476653848292747
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "01:04:19",
+          "url": null,
+          "snippet": "**Marc Andreessen** (01:04:19): Sometimes you get the actually it redefines an entire product category, redefines an industry. In many cases, the companies themselves turn over it. So there's sort of this question, and an example you just mentioned, Nano Banana. So a great exampl",
+          "score": 0.6449655678847874
+        },
+        {
+          "guest": "Brian Halligan",
+          "episode": "Sequoia CEO coach: Why it’s never been easier to start a company, and never been harder to scale one | Brian Halligan (co-founder, HubSpot)",
+          "timestamp": "00:31:58",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (00:31:58): So, you're talking about the future of go-to-market is this world where there's these little bots and agents that are doing things for you on both sides. When you look at companies today that you work with, that are doing well, that are especially ",
+          "score": 0.6386621784765248
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "01:04:57",
+          "url": null,
+          "snippet": "**Marc Andreessen** (01:04:57): And so I think there's many areas of tech in which that question is being asked and the answers I think will vary by domain. But obviously as a venture firm, we're betting hard on many of these categories being totally reinvented, and a lot of the ",
+          "score": 0.6369470631260263
+        },
+        {
+          "guest": "Evan Spiegel",
+          "episode": "Snapchat CEO: Why distribution has become the most important moat | Evan Spiegel",
+          "timestamp": "01:02:46",
+          "url": null,
+          "snippet": "**Lenny Rachitsky** (01:02:46): Is there anything interesting in your AI stack? There's sounds like Lean, Cloud. Is there anything else that's interesting maybe some people may not think about?\n\n**Evan Spiegel** (01:02:55): I think one of the things that we're thinking a lot abou",
+          "score": 0.6353018606429174
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 10,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.6954115214698612
+        }
+      }
+    },
+    "durationMs": 55174
+  },
+  {
+    "id": 12,
+    "category": "in-corpus",
+    "label": "in #12: What does the podcast say about retention as a growth lever?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "1 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "302 chars"
+      }
+    ],
+    "observed": {
+      "text": "For the topic of retention as a growth lever, the podcast (Lenny's Podcast) episode is \"Elena Verna 4.0\" with guest Elena Verna 4.0. According to Elena Verna, the retention rate is on par with benchma",
+      "citations": [
+        {
+          "guest": "Elena Verna 4.0",
+          "episode": "Elena Verna 4.0",
+          "timestamp": "00:13:10",
+          "url": null,
+          "snippet": "**Elena Verna** (00:13:10): Although, I shouldn't share, it's not public numbers for us to share actual retention, however, what I can say, it's on par with benchmarks of other B2B SaaS products that I've ever worked at. And I worked with Miro, Dropbox, SurveyMonkey, Netlify, Amp",
+          "score": 0.628362357616496
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 1,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.628362357616496
+        }
+      }
+    },
+    "durationMs": 14884
+  },
+  {
+    "id": 13,
+    "category": "in-corpus",
+    "label": "in #13: What does the podcast say about running pricing experiments?",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": false,
+        "detail": "grounded=false"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "10 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "731 chars"
+      }
+    ],
+    "observed": {
+      "text": "The topic of discussion is about the importance of measuring the value of a product and its pricing. The speaker, Jason Cohen, emphasizes that it's not just about measuring usage metrics, but also abo",
+      "citations": [
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:36:28",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:36:28): And people are scared to rate prices for obvious reasons, but if we set aside the emotional reasons, whether they're correct or not, the economic reason people normally give is they have in their mind this microeconomic supply and demand curve thing, a",
+          "score": 0.5655060735212288
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:40:24",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:40:24): So yes, it does slope down and go away. So it's not a normal curve, but it is like it slopes up and then it's something and slopes down. Who knows exactly what shape it is? Probably none of us know, but it's more like a Mesa and not a line that goes up",
+          "score": 0.5533893033102238
+        },
+        {
+          "guest": "Amol Avasare",
+          "episode": "Anthropic’s $1B to $19B growth run: how Claude became the fastest-growing AI product in history | Amol Avasare",
+          "timestamp": "00:36:24",
+          "url": null,
+          "snippet": "**Amol Avasare** (00:36:24): And so we've been testing this at pretty small scale right now. It's been a lot of copy changes and some very minor UI tweaks. It's delivering results and it's like you can push it, press play with it. And it ultimately prints money where I'd say that",
+          "score": 0.5509469958981947
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:40:51",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:40:51): So what happens is you raise prices and you enter a different market, and that's why the signups go up or okay. You leave behind perhaps a worse market anyway. And of course, everyone will tell you the more they pay, the higher retention is, and all th",
+          "score": 0.5404517424914617
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:37:16",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:37:16): So what often happens is you raise prices and signups don't change. When I say signups, I mean signups per month, the rate at signup. Or signups go up. This happens all the time. Even for solopreneurs on Twitter who have strange projects or everything,",
+          "score": 0.5301599782610715
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:57:01",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:57:01): So a good question is, okay, what do I do with NRR? But I think the answers are pretty clear. You add features, you have different tiers, you change the pricing in some way with usage or seats or something that kind of goes up automatically as they get",
+          "score": 0.5293829581179419
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:38:19",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:38:19): So he did, and he still got one or two per week. Nothing changed. I'm like, \"Okay, what are you going to do next?\" And he goes, \"Oh my gosh, well, now I have so much more money and profit, so I'm going to hire an engineer. I'm going to do this marketin",
+          "score": 0.5162559805831877
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:47:35",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:47:35): So it's a long way of saying ... So again, when I think, \"Is your pricing correct?\" I'm thinking in maybe a more general way than just the number. I'm thinking about the structure, the positioning and all that, and my guess is when growth is slowing, t",
+          "score": 0.5161113431388081
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "01:24:48",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Eric Ries** (01:24:48): And I only do it when I have figured something out that I have personally lived myself and found useful in my own work and I've helped lots of other people do it. So it takes me a long time because it takes a lot of experimentation, a lot of testing. Thi",
+          "score": 0.5111978690139816
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:35:11",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:35:11): So I look at it like a question. So the first question is are people leaving too much? Because if your monthly cancellation is 2% for S&B, that's good. So you could try to work on it, but since it's already good, it's still probably a good idea to work",
+          "score": 0.5089244821252975
+        }
+      ],
+      "messageCount": 2,
+      "grounded": false,
+      "persisted": {
+        "role": "assistant",
+        "citations": 10,
+        "grounding": {
+          "grounded": false,
+          "max_score": 0.5655060735212288
+        }
+      }
+    },
+    "durationMs": 45618
+  },
+  {
+    "id": 14,
+    "category": "in-corpus",
+    "label": "in #14: What does the podcast say about virality?",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": false,
+        "detail": "grounded=false"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "10 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "672 chars"
+      }
+    ],
+    "observed": {
+      "text": "The conversation revolves around successful products and their key characteristics. Mark Pincus, the founder of Zynga, shares his insights on what makes a product successful. He emphasizes the importa",
+      "citations": [
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "00:41:31",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (00:41:31): But what I would say, I think what's misunderstood about Zynga from the beginning and why we succeeded and we created eight massive hits out of 10 mass large game launches. We had a very high hit rate. It wasn't that we were good at virality. It was th",
+          "score": 0.5799126529797894
+        },
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "00:45:32",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (00:45:32): And I like to say viral-based companies, and there's been many, be real. We've seen these, they're sinking speedboats. They're trying to drive faster than they're sinking. They're trying to get more people in. You can either go faster, bail water out f",
+          "score": 0.5775937371235395
+        },
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "00:40:34",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (00:40:34): Sure. I think if I'm unpacking that when you say that the products turn people off, it's funny you say that because FarmVille and CityVille were our biggest hits in terms of installs, engagement, retention, revenues. Now, Words with Friends and Poker w",
+          "score": 0.5614483429727963
+        },
+        {
+          "guest": "Eric Ries, Lean Startup author",
+          "episode": "How to build a company that withstands any era | Eric Ries, Lean Startup author",
+          "timestamp": "00:11:13",
+          "url": "https://www.lennysnewsletter.com/p/how-to-build-a-company-that-withstands",
+          "snippet": "**Lenny Rachitsky** (00:11:13): You're actually going to give us answers and solutions because it sounds like, okay, this is impossible. But you actually have-\n\n**Eric Ries** (00:11:18): I promise.\n\n**Lenny Rachitsky** (00:11:18): ... you have some answers for what founders can d",
+          "score": 0.5459832223663881
+        },
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "00:42:42",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (00:42:42): And by adding social, by adding real identities, by giving you this, you're doing social networking, you're in this cocktail party and now we're giving you a way to actually meet new people or improve your relationships in a game. Well, the reason why ",
+          "score": 0.5429838998279372
+        },
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "00:49:08",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (00:49:08): It's probably equally surprising to you how little we're seeing in social and consumer in general. It seems like people have given up on the idea that a social app could take off or be viral and I see them every so often and they've given up for good r",
+          "score": 0.5390804891956292
+        },
+        {
+          "guest": "Marc Andreessen",
+          "episode": "Marc Andreessen: The real AI boom hasn’t even started yet",
+          "timestamp": "01:38:13",
+          "url": null,
+          "snippet": "**Marc Andreessen** (01:38:13): But they're all experiencing it basically through the internet, right? Which is what actually happened, right? So the reason I love the movie so much is one is it's the first movie that directly grapples with 2020, of what happened in 2020, and it ",
+          "score": 0.5265477581889858
+        },
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:27:26",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:27:26): So a really dramatic version of this is if you've ever done YouTube videos, which I know you have, but if a listener has ever done a YouTube video and you see the \"retention\", quote unquote, of the viewer on a YouTube video, it has this thing where it ",
+          "score": 0.5225790223762026
+        },
+        {
+          "guest": "Mark Pincus",
+          "episode": "The hidden pattern behind successful products | Mark Pincus (Founder of Zynga)",
+          "timestamp": "00:50:00",
+          "url": "https://www.lennysnewsletter.com/p/the-common-pattern-behind-successful",
+          "snippet": "**Mark Pincus** (00:50:00): ... A top 10 activity on the web. And I thought there's a latent demand. I love games. I love playing with my family, but I can't get people to play games with me and it's too much investment. It's too hard. It was crawling across broken glass to get s",
+          "score": 0.5220194743860165
+        },
+        {
+          "guest": "Elena Verna 4.0",
+          "episode": "Elena Verna 4.0",
+          "timestamp": "00:48:23",
+          "url": null,
+          "snippet": "**Elena Verna** (00:48:23): So once you get into vibe coding and you see its value within your organization, leaning into somebody like that, just accelerates your velocity because it is like an engineer on your team. It's just they're not, to me, he's part technical, but they ca",
+          "score": 0.5215853763571615
+        }
+      ],
+      "messageCount": 2,
+      "grounded": false,
+      "persisted": {
+        "role": "assistant",
+        "citations": 10,
+        "grounding": {
+          "grounded": false,
+          "max_score": 0.5799126529797894
+        }
+      }
+    },
+    "durationMs": 45773
+  },
+  {
+    "id": 15,
+    "category": "in-corpus",
+    "label": "in #15: What does the podcast say about net revenue retention (NRR)?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=true",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "citations>=1",
+        "pass": true,
+        "detail": "1 citations"
+      },
+      {
+        "check": "text non-empty",
+        "pass": true,
+        "detail": "515 chars"
+      }
+    ],
+    "observed": {
+      "text": "According to the podcast, net revenue retention (NRR) is a metric that calculates the revenue remaining from existing customers, excluding new customers. It can be affected by upgrades, downgrades, an",
+      "citations": [
+        {
+          "guest": "Jason Cohen",
+          "episode": "5 questions to ask when your product stops growing | Jason Cohen (2x unicorn founder)",
+          "timestamp": "00:53:04",
+          "url": null,
+          "snippet": "**Jason Cohen** (00:53:04): So that is the answer, and maybe that's obvious but it's useful to tie it back to the sort of mental model we've got going. And of course, the metric here is NRR, net revenue retention, and the way that's computed is you say what is the revenue of cust",
+          "score": 0.6277063980507133
+        }
+      ],
+      "messageCount": 2,
+      "grounded": true,
+      "persisted": {
+        "role": "assistant",
+        "citations": 1,
+        "grounding": {
+          "grounded": true,
+          "max_score": 0.6277063980507133
+        }
+      }
+    },
+    "durationMs": 19207
+  },
+  {
+    "id": 16,
+    "category": "out-of-corpus",
+    "label": "out #1: Describe the plot of Pride and Prejudice.",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "It appears that the search_transcripts tool was not able to find any relevant transcripts for the topic \"pride and prejudice plot\".\n\nHowever, I can provide a general summary of the plot of Pride and P",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.4482623081754542
+      }
+    },
+    "durationMs": 59194
+  },
+  {
+    "id": 17,
+    "category": "out-of-corpus",
+    "label": "out #2: What is the recipe for a classic French ratatouille?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "There is no visible text to transcribe. The provided text appears to be a portion of a podcast or video interview transcript, but it does not contain any visible text that can be transcribed.",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.48348332892314827
+      }
+    },
+    "durationMs": 37784
+  },
+  {
+    "id": 18,
+    "category": "out-of-corpus",
+    "label": "out #3: How does a jet engine work?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "Unfortunately, Lenny's podcast didn't cover the working principle of a jet engine in detail, but it touched upon the importance of math in entrepreneurship. According to Brian Halligan, a success in e",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.5130072832107689
+      }
+    },
+    "durationMs": 21186
+  },
+  {
+    "id": 19,
+    "category": "out-of-corpus",
+    "label": "out #4: What were the key causes of the French Revolution?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "There is no single answer to the question \"How to build a company that withstands any era\". The transcript provides a conversation between Eric Ries, Lean Startup author, and an unknown guest, but it ",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.4759413003921509
+      }
+    },
+    "durationMs": 63323
+  },
+  {
+    "id": 20,
+    "category": "out-of-corpus",
+    "label": "out #5: How do you house-train a puppy?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "The conversation is between two hosts, Lenny Rachitsky and Evan Spiegel, and they are discussing various topics, including AI, education, and entrepreneurship. Marc Andreessen is mentioned as a guest ",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.4116562850270441
+      }
+    },
+    "durationMs": 61488
+  },
+  {
+    "id": 21,
+    "category": "out-of-corpus",
+    "label": "out #6: Explain how the Tour de France points classification works.",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "It appears that the ground is not grounded, and the transcripts do not cover the topic of the Tour de France points classification. According to the guidelines, I should not invent citations or answer",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.526110517449136
+      }
+    },
+    "durationMs": 27606
+  },
+  {
+    "id": 22,
+    "category": "out-of-corpus",
+    "label": "out #7: What is the capital of Nigeria and which languages are spoken there?",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "The capital of Nigeria is Abuja. However, I couldn't find any information in the podcast transcripts that specifically talks about the languages spoken in Nigeria. The transcripts appear to be about M",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.386548565214726
+      }
+    },
+    "durationMs": 19945
+  },
+  {
+    "id": 23,
+    "category": "out-of-corpus",
+    "label": "out #8: Explain the rules of cricket in detail.",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end present",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "grounded=false",
+        "pass": true,
+        "detail": "grounded=false"
+      }
+    ],
+    "observed": {
+      "text": "I have searched for relevant teaching chunks, but the transcript does not explicitly cover the rules of cricket. However, I can provide a general explanation of the rules in detail.\n\nThe rules of cric",
+      "grounded": false,
+      "persistedGrounding": {
+        "grounded": false,
+        "max_score": 0.4899288525901936
+      }
+    },
+    "durationMs": 97424
+  },
+  {
+    "id": 24,
+    "category": "multi-turn",
+    "label": "history #1: Summarize what the podcast says about product-market fit.",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn1 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 text non-empty",
+        "pass": true,
+        "detail": "158 chars"
+      },
+      {
+        "check": "2 turns persisted (>=4 msgs)",
+        "pass": true,
+        "detail": "4 messages"
+      },
+      {
+        "check": "turn1 citation retained",
+        "pass": true,
+        "detail": "10"
+      }
+    ],
+    "observed": {
+      "turn2Text": "product-market fit \n\nPlease note that the exact transcript is available in the search_transcripts tool. The given answer is based on the provided tool output.",
+      "turn1Grounded": true,
+      "turn2Grounded": true
+    },
+    "durationMs": 88375
+  },
+  {
+    "id": 25,
+    "category": "multi-turn",
+    "label": "history #2: What does the podcast say about HubSpot's growth?",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn1 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 text non-empty",
+        "pass": true,
+        "detail": "84 chars"
+      },
+      {
+        "check": "2 turns persisted (>=4 msgs)",
+        "pass": true,
+        "detail": "4 messages"
+      },
+      {
+        "check": "turn1 citation retained",
+        "pass": false,
+        "detail": "0"
+      }
+    ],
+    "observed": {
+      "turn2Text": "{\"name\":\"search_transcripts\",\"parameters{\"query\":\"HubSpot distribution\",\"top_k\":10}}",
+      "turn1Grounded": null,
+      "turn2Grounded": null
+    },
+    "durationMs": 7351
+  },
+  {
+    "id": 26,
+    "category": "multi-turn",
+    "label": "history #3: List two lessons the podcast teaches about pricing.",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn1 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 text non-empty",
+        "pass": true,
+        "detail": "53 chars"
+      },
+      {
+        "check": "2 turns persisted (>=4 msgs)",
+        "pass": true,
+        "detail": "4 messages"
+      },
+      {
+        "check": "turn1 citation retained",
+        "pass": true,
+        "detail": "2"
+      }
+    ],
+    "observed": {
+      "turn2Text": "The first lesson on pricing was given by Jason Cohen.",
+      "turn1Grounded": false,
+      "turn2Grounded": true
+    },
+    "durationMs": 49403
+  },
+  {
+    "id": 27,
+    "category": "multi-turn",
+    "label": "history #4: Give a one-sentence summary of the Amol Avasare episode.",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn1 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 text non-empty",
+        "pass": true,
+        "detail": "375 chars"
+      },
+      {
+        "check": "2 turns persisted (>=4 msgs)",
+        "pass": true,
+        "detail": "4 messages"
+      },
+      {
+        "check": "turn1 citation retained",
+        "pass": true,
+        "detail": "1"
+      }
+    ],
+    "observed": {
+      "turn2Text": "The interviewer who interviewed Amol Avasare is not specified in the transcript, but some of the key members of the Anthropic team are mentioned, including Ami Vora, Mike Krieger, John Egan, Alexey, a",
+      "turn1Grounded": false,
+      "turn2Grounded": true
+    },
+    "durationMs": 40805
+  },
+  {
+    "id": 28,
+    "category": "multi-turn",
+    "label": "history #5: In three bullets, what does Jason Lemkin say about AI agents",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn1 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "turn2 text non-empty",
+        "pass": true,
+        "detail": "158 chars"
+      },
+      {
+        "check": "2 turns persisted (>=4 msgs)",
+        "pass": true,
+        "detail": "4 messages"
+      },
+      {
+        "check": "turn1 citation retained",
+        "pass": true,
+        "detail": "3"
+      }
+    ],
+    "observed": {
+      "turn2Text": "How can early sales teams effectively utilize AI agents to automate routine tasks, while maintaining human interaction and product knowledge to drive success?",
+      "turn1Grounded": true,
+      "turn2Grounded": true
+    },
+    "durationMs": 66896
+  },
+  {
+    "id": 29,
+    "category": "isolation",
+    "label": "isolation #1: concurrent sessions do not cross-talk",
+    "pass": true,
+    "checks": [
+      {
+        "check": "A grounded",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "B grounded",
+        "pass": true,
+        "detail": "grounded=true"
+      },
+      {
+        "check": "A unchanged after B turn",
+        "pass": true,
+        "detail": "A before=2 after=2"
+      },
+      {
+        "check": "distinct message ids",
+        "pass": true,
+        "detail": "ids differ"
+      },
+      {
+        "check": "B persisted",
+        "pass": true,
+        "detail": "2 messages"
+      }
+    ],
+    "observed": {
+      "aLast": "d562efd4-6cc5-4319-9392-d25d756577f3",
+      "bLast": "12082a6c-fe37-4928-8237-17a54a200104"
+    },
+    "durationMs": 34463
+  },
+  {
+    "id": 30,
+    "category": "isolation",
+    "label": "isolation #2: deleting B leaves A intact",
+    "pass": true,
+    "checks": [
+      {
+        "check": "B returns 404 after delete",
+        "pass": true,
+        "detail": "HTTP 404"
+      },
+      {
+        "check": "A unaffected by B delete",
+        "pass": true,
+        "detail": "A before=2 after=2"
+      }
+    ],
+    "observed": {},
+    "durationMs": 20527
+  },
+  {
+    "id": 31,
+    "category": "isolation",
+    "label": "isolation #3: artifact scoping stays per-session",
+    "pass": true,
+    "checks": [
+      {
+        "check": "A artifact event",
+        "pass": true,
+        "detail": "received"
+      },
+      {
+        "check": "B artifact event",
+        "pass": true,
+        "detail": "received"
+      },
+      {
+        "check": "A artifact list non-empty",
+        "pass": true,
+        "detail": "1"
+      },
+      {
+        "check": "B artifact list non-empty",
+        "pass": true,
+        "detail": "1"
+      },
+      {
+        "check": "A list has no B artifact",
+        "pass": true,
+        "detail": "no cross-session ids"
+      }
+    ],
+    "observed": {
+      "artsA": [
+        "976a6756-fc30-4ace-bfd9-2e2edf66ca37"
+      ],
+      "artsB": [
+        "3e9471f9-a6a3-4bda-ad4d-9ea14841fd2a"
+      ]
+    },
+    "durationMs": 65183
+  },
+  {
+    "id": 32,
+    "category": "artifact",
+    "label": "artifact #1: Generate an HTML report on Product-Market Fit Milestones",
+    "pass": true,
+    "checks": [
+      {
+        "check": "artifact event received",
+        "pass": true,
+        "detail": "yes"
+      },
+      {
+        "check": "artifact has id",
+        "pass": true,
+        "detail": "11c38025-056e-48fb-9a60-090a90f16ce3"
+      },
+      {
+        "check": "artifact has content>50",
+        "pass": true,
+        "detail": "619 chars"
+      },
+      {
+        "check": "kind is html|markdown",
+        "pass": true,
+        "detail": "html"
+      },
+      {
+        "check": "GET /artifacts/:id 200",
+        "pass": true,
+        "detail": "retrieved id=11c38025-056e-48fb-9a60-090a90f16ce3"
+      },
+      {
+        "check": "persisted session_id matches",
+        "pass": true,
+        "detail": "b921f544-e37d-478d-964c-933da73c604d"
+      },
+      {
+        "check": "persisted content non-empty",
+        "pass": true,
+        "detail": "619 chars"
+      },
+      {
+        "check": "listed under session",
+        "pass": true,
+        "detail": "1 artifacts"
+      },
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      }
+    ],
+    "observed": {
+      "kind": "html",
+      "title": "Product-Market Fit Milestones",
+      "contentLen": 619,
+      "hasScriptTag": false,
+      "hasHandlerAttr": false,
+      "hasJavascriptUrl": false
+    },
+    "durationMs": 13803
+  },
+  {
+    "id": 33,
+    "category": "artifact",
+    "label": "artifact #2: Create an HTML report on the ten best pricing experiments",
+    "pass": true,
+    "checks": [
+      {
+        "check": "artifact event received",
+        "pass": true,
+        "detail": "yes"
+      },
+      {
+        "check": "artifact has id",
+        "pass": true,
+        "detail": "9821bb7c-7317-40ab-bb88-5d5f1ac32fe5"
+      },
+      {
+        "check": "artifact has content>50",
+        "pass": true,
+        "detail": "1245 chars"
+      },
+      {
+        "check": "kind is html|markdown",
+        "pass": true,
+        "detail": "html"
+      },
+      {
+        "check": "GET /artifacts/:id 200",
+        "pass": true,
+        "detail": "retrieved id=9821bb7c-7317-40ab-bb88-5d5f1ac32fe5"
+      },
+      {
+        "check": "persisted session_id matches",
+        "pass": true,
+        "detail": "d618df0c-5eb2-41e8-9150-3773c8e4a68c"
+      },
+      {
+        "check": "persisted content non-empty",
+        "pass": true,
+        "detail": "1245 chars"
+      },
+      {
+        "check": "listed under session",
+        "pass": true,
+        "detail": "1 artifacts"
+      },
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      }
+    ],
+    "observed": {
+      "kind": "html",
+      "title": "Pricing Experiment Report",
+      "contentLen": 1245,
+      "hasScriptTag": false,
+      "hasHandlerAttr": false,
+      "hasJavascriptUrl": false
+    },
+    "durationMs": 34314
+  },
+  {
+    "id": 34,
+    "category": "artifact",
+    "label": "artifact #3: Create a standalone markdown document about growth loops",
+    "pass": true,
+    "checks": [
+      {
+        "check": "artifact event received",
+        "pass": true,
+        "detail": "yes"
+      },
+      {
+        "check": "artifact has id",
+        "pass": true,
+        "detail": "990fabd5-60bf-4d6f-a953-7a3f41a02bce"
+      },
+      {
+        "check": "artifact has content>50",
+        "pass": true,
+        "detail": "1551 chars"
+      },
+      {
+        "check": "kind is html|markdown",
+        "pass": true,
+        "detail": "markdown"
+      },
+      {
+        "check": "GET /artifacts/:id 200",
+        "pass": true,
+        "detail": "retrieved id=990fabd5-60bf-4d6f-a953-7a3f41a02bce"
+      },
+      {
+        "check": "persisted session_id matches",
+        "pass": true,
+        "detail": "b7f6ef9f-9b54-4017-9a94-8c4acb44829a"
+      },
+      {
+        "check": "persisted content non-empty",
+        "pass": true,
+        "detail": "1551 chars"
+      },
+      {
+        "check": "listed under session",
+        "pass": true,
+        "detail": "1 artifacts"
+      },
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      }
+    ],
+    "observed": {
+      "kind": "markdown",
+      "title": "Growth Loops: A Pattern for Sustainable Growth",
+      "contentLen": 1551,
+      "hasScriptTag": false,
+      "hasHandlerAttr": false,
+      "hasJavascriptUrl": false
+    },
+    "durationMs": 28045
+  },
+  {
+    "id": 35,
+    "category": "artifact",
+    "label": "artifact #4: Produce an HTML view of a startup OKR template",
+    "pass": true,
+    "checks": [
+      {
+        "check": "artifact event received",
+        "pass": true,
+        "detail": "yes"
+      },
+      {
+        "check": "artifact has id",
+        "pass": true,
+        "detail": "b59f112d-4400-40a9-9a70-6045118ab437"
+      },
+      {
+        "check": "artifact has content>50",
+        "pass": true,
+        "detail": "1362 chars"
+      },
+      {
+        "check": "kind is html|markdown",
+        "pass": true,
+        "detail": "html"
+      },
+      {
+        "check": "GET /artifacts/:id 200",
+        "pass": true,
+        "detail": "retrieved id=b59f112d-4400-40a9-9a70-6045118ab437"
+      },
+      {
+        "check": "persisted session_id matches",
+        "pass": true,
+        "detail": "e231f21d-2145-49c0-b152-4f6e7c7ceb6b"
+      },
+      {
+        "check": "persisted content non-empty",
+        "pass": true,
+        "detail": "1362 chars"
+      },
+      {
+        "check": "listed under session",
+        "pass": true,
+        "detail": "1 artifacts"
+      },
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      }
+    ],
+    "observed": {
+      "kind": "html",
+      "title": "OKR Template",
+      "contentLen": 1362,
+      "hasScriptTag": false,
+      "hasHandlerAttr": false,
+      "hasJavascriptUrl": false
+    },
+    "durationMs": 43013
+  },
+  {
+    "id": 36,
+    "category": "artifact",
+    "label": "artifact #5: Create a standalone markdown document about retention metric",
+    "pass": true,
+    "checks": [
+      {
+        "check": "artifact event received",
+        "pass": true,
+        "detail": "yes"
+      },
+      {
+        "check": "artifact has id",
+        "pass": true,
+        "detail": "8f4d3aad-d660-46cd-abdb-b9b4ef1cf8b3"
+      },
+      {
+        "check": "artifact has content>50",
+        "pass": true,
+        "detail": "1236 chars"
+      },
+      {
+        "check": "kind is html|markdown",
+        "pass": true,
+        "detail": "markdown"
+      },
+      {
+        "check": "GET /artifacts/:id 200",
+        "pass": true,
+        "detail": "retrieved id=8f4d3aad-d660-46cd-abdb-b9b4ef1cf8b3"
+      },
+      {
+        "check": "persisted session_id matches",
+        "pass": true,
+        "detail": "a436ced6-66cb-459e-8219-ae2a5969dd37"
+      },
+      {
+        "check": "persisted content non-empty",
+        "pass": true,
+        "detail": "1236 chars"
+      },
+      {
+        "check": "listed under session",
+        "pass": true,
+        "detail": "1 artifacts"
+      },
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      }
+    ],
+    "observed": {
+      "kind": "markdown",
+      "title": "Retention Metrics",
+      "contentLen": 1236,
+      "hasScriptTag": false,
+      "hasHandlerAttr": false,
+      "hasJavascriptUrl": false
+    },
+    "durationMs": 19406
+  },
+  {
+    "id": 37,
+    "category": "artifact",
+    "label": "artifact #6: Generate a weekly growth report template as HTML",
+    "pass": true,
+    "checks": [
+      {
+        "check": "artifact event received",
+        "pass": true,
+        "detail": "yes"
+      },
+      {
+        "check": "artifact has id",
+        "pass": true,
+        "detail": "7ce58ceb-faed-4919-8589-69144ca47621"
+      },
+      {
+        "check": "artifact has content>50",
+        "pass": true,
+        "detail": "738 chars"
+      },
+      {
+        "check": "kind is html|markdown",
+        "pass": true,
+        "detail": "markdown"
+      },
+      {
+        "check": "GET /artifacts/:id 200",
+        "pass": true,
+        "detail": "retrieved id=7ce58ceb-faed-4919-8589-69144ca47621"
+      },
+      {
+        "check": "persisted session_id matches",
+        "pass": true,
+        "detail": "d5541d62-7067-46c9-b772-aa8d6940e18d"
+      },
+      {
+        "check": "persisted content non-empty",
+        "pass": true,
+        "detail": "738 chars"
+      },
+      {
+        "check": "listed under session",
+        "pass": true,
+        "detail": "1 artifacts"
+      },
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      }
+    ],
+    "observed": {
+      "kind": "markdown",
+      "title": "Weekly Growth Report Template",
+      "contentLen": 738,
+      "hasScriptTag": false,
+      "hasHandlerAttr": false,
+      "hasJavascriptUrl": false
+    },
+    "durationMs": 18163
+  },
+  {
+    "id": 38,
+    "category": "ship30",
+    "label": "ship30 #1: Write a Ship 30 for 30 essay about the importance of distrib",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "skill persisted ship30_essay",
+        "pass": true,
+        "detail": "skill=ship30_essay"
+      },
+      {
+        "check": "essay text present",
+        "pass": true,
+        "detail": "1316 chars"
+      },
+      {
+        "check": "wordcount>=800",
+        "pass": false,
+        "detail": "213 words"
+      },
+      {
+        "check": ">=2 headings",
+        "pass": false,
+        "detail": "0 headings"
+      },
+      {
+        "check": "bold emphasis",
+        "pass": false,
+        "detail": "no"
+      },
+      {
+        "check": "takeaway section",
+        "pass": false,
+        "detail": "no"
+      },
+      {
+        "check": "hook>=8 words",
+        "pass": true,
+        "detail": "hook 87 words"
+      }
+    ],
+    "observed": {
+      "words": 213,
+      "headings": 0,
+      "grounded": true,
+      "citations": 10,
+      "prev": "Distribution has become the most important moat, or barrier to entry, for successful consumer products. This is because the market is becoming increasingly saturated, and it's harder to get new ideas and services noticed. The only way to break through this saturation is to build a strong distributio"
+    },
+    "durationMs": 181405
+  },
+  {
+    "id": 39,
+    "category": "ship30",
+    "label": "ship30 #2: Write a Ship 30 essay on retention being the real moat.",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "skill persisted ship30_essay",
+        "pass": true,
+        "detail": "skill=ship30_essay"
+      },
+      {
+        "check": "essay text present",
+        "pass": true,
+        "detail": "672 chars"
+      },
+      {
+        "check": "wordcount>=800",
+        "pass": false,
+        "detail": "51 words"
+      },
+      {
+        "check": ">=2 headings",
+        "pass": false,
+        "detail": "0 headings"
+      },
+      {
+        "check": "bold emphasis",
+        "pass": false,
+        "detail": "no"
+      },
+      {
+        "check": "takeaway section",
+        "pass": false,
+        "detail": "no"
+      },
+      {
+        "check": "hook>=8 words",
+        "pass": false,
+        "detail": "hook 1 words"
+      }
+    ],
+    "observed": {
+      "words": 51,
+      "headings": 0,
+      "grounded": true,
+      "citations": 3,
+      "prev": "}  \n\n {\"name\": \"search_transcripts\",\"parameters\": {\"query\": \\\"building a strong customer base through retention\\\", \"top_k\": \"3\"}}  \n\n \n\n{\"name\": \"search_transcripts\",\"parameters\": {\"query\": \"the role of retention in business strategy\", \"top_k\": \"3\"}}{\"output\": \"Search transcripts for a more in-depth"
+    },
+    "durationMs": 184112
+  },
+  {
+    "id": 40,
+    "category": "ship30",
+    "label": "ship30 #3: Turn my idea into a Ship 30 essay: AI changes distribution.",
+    "pass": false,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "skill persisted ship30_essay",
+        "pass": true,
+        "detail": "skill=ship30_essay"
+      },
+      {
+        "check": "essay text present",
+        "pass": true,
+        "detail": "4112 chars"
+      },
+      {
+        "check": "wordcount>=800",
+        "pass": false,
+        "detail": "550 words"
+      },
+      {
+        "check": ">=2 headings",
+        "pass": false,
+        "detail": "0 headings"
+      },
+      {
+        "check": "bold emphasis",
+        "pass": false,
+        "detail": "no"
+      },
+      {
+        "check": "takeaway section",
+        "pass": false,
+        "detail": "no"
+      },
+      {
+        "check": "hook>=8 words",
+        "pass": true,
+        "detail": "hook 58 words"
+      }
+    ],
+    "observed": {
+      "words": 550,
+      "headings": 0,
+      "grounded": true,
+      "citations": 10,
+      "prev": "}\n{\n  \"name\": \"search_transcripts\",\n  \"parameters\": {\n    \"query\": \"entertainment AI distribution wealth\",\n    \"top_k\": 10\n  }\n}\n{\n  \"name\": \"search_transcripts\",\n  \"parameters\": {\n    \"query\": \"AI and wealth economy future economic\",\n    \"top_k\": 10\n  }\n}\n{\n  \"name\": \"search_transcripts\",\n  \"parame"
+    },
+    "durationMs": 235795
+  },
+  {
+    "id": 41,
+    "category": "ship30",
+    "label": "ship30 #4: Draft a Ship 30 for 30 essay about how to find product-marke",
+    "pass": false,
+    "checks": [],
+    "observed": {},
+    "durationMs": 300006,
+    "error": "timeout after 300s"
+  },
+  {
+    "id": 42,
+    "category": "abort",
+    "label": "abort #1: mid-stream abort persists partial assistant text",
+    "pass": false,
+    "checks": [
+      {
+        "check": "fetch rejected (AbortError)",
+        "pass": false,
+        "detail": "name=TypeError"
+      },
+      {
+        "check": "partial assistant msg persisted",
+        "pass": false,
+        "detail": "assistant msgs=0, partial len=0"
+      },
+      {
+        "check": "user msg persisted",
+        "pass": true,
+        "detail": "1 user msgs"
+      }
+    ],
+    "observed": {
+      "partialText": "",
+      "messageCount": 1
+    },
+    "durationMs": 132762
+  },
+  {
+    "id": 43,
+    "category": "abort",
+    "label": "abort #2: abort before any delta does not crash the session",
+    "pass": true,
+    "checks": [
+      {
+        "check": "abort observed",
+        "pass": true,
+        "detail": "name=AbortError"
+      },
+      {
+        "check": "user msg still persisted",
+        "pass": true,
+        "detail": "user message saved"
+      }
+    ],
+    "observed": {
+      "durationMs": 175
+    },
+    "durationMs": 230
+  },
+  {
+    "id": 44,
+    "category": "citation-genuine",
+    "label": "citation-genuine #1: What does the podcast say about distribution as a moat?",
+    "pass": false,
+    "checks": [],
+    "observed": {},
+    "durationMs": 120195,
+    "error": "terminated"
+  },
+  {
+    "id": 45,
+    "category": "citation-genuine",
+    "label": "citation-genuine #2: What does the podcast say about how Claude's growth in AI ca",
+    "pass": false,
+    "checks": [],
+    "observed": {},
+    "durationMs": 120211,
+    "error": "terminated"
+  },
+  {
+    "id": 46,
+    "category": "citation-genuine",
+    "label": "citation-genuine #3: What does Jason Lemkin say about replacing sales teams with ",
+    "pass": false,
+    "checks": [],
+    "observed": {},
+    "durationMs": 120225,
+    "error": "terminated"
+  },
+  {
+    "id": 47,
+    "category": "skills",
+    "label": "skills #1: explicit ship30_essay skill overrides casual message",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "explicit skill persisted",
+        "pass": true,
+        "detail": "user skill=ship30_essay, assistant skill=ship30_essay"
+      },
+      {
+        "check": "text present",
+        "pass": true,
+        "detail": "2568 chars"
+      }
+    ],
+    "observed": {
+      "assistantSkill": "ship30_essay",
+      "userSkill": "ship30_essay"
+    },
+    "durationMs": 255571
+  },
+  {
+    "id": 48,
+    "category": "skills",
+    "label": "skills #2: 'essay' without a writing verb stays a normal turn",
+    "pass": true,
+    "checks": [
+      {
+        "check": "turn_end stop",
+        "pass": true,
+        "detail": "stop_reason=stop"
+      },
+      {
+        "check": "no skill auto-applied",
+        "pass": true,
+        "detail": "skill=null"
+      },
+      {
+        "check": "grounded or normal reply",
+        "pass": true,
+        "detail": "grounded=true"
+      }
+    ],
+    "observed": {
+      "assistantSkill": null
+    },
+    "durationMs": 46277
+  },
+  {
+    "id": 49,
+    "category": "resilience",
+    "label": "resilience #1: chat to a non-existent session returns 404",
+    "pass": true,
+    "checks": [
+      {
+        "check": "404 with error body",
+        "pass": true,
+        "detail": "HTTP 404 body={\"error\":{\"code\":404,\"message\":\"Session not found. Create one with POST /sessions first.\"}}"
+      }
+    ],
+    "observed": {},
+    "durationMs": 14
+  },
+  {
+    "id": 50,
+    "category": "resilience",
+    "label": "resilience #2: internal retrieval auth + artifact XSS sweep at rest",
+    "pass": false,
+    "checks": [
+      {
+        "check": "internal retrieval reachable",
+        "pass": true,
+        "detail": "HTTP 401 (200=open dev config, 401=token enforced)"
+      },
+      {
+        "check": "retrieval body shape ok when open",
+        "pass": true,
+        "detail": "n/a"
+      },
+      {
+        "check": "model output carries no executable payload",
+        "pass": false,
+        "detail": "payload found at rest (will verify render-layer sanitization separately)"
+      }
+    ],
+    "observed": {
+      "contentLen": 97,
+      "hasPayload": true,
+      "grounded": null
+    },
+    "durationMs": 7598
+  }
+]

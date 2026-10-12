@@ -1,0 +1,4 @@
+{
+  "_comment": "Placeholder auth store for the Pi ModelRuntime. The Ollama provider uses a static apiKey in models.json, so this stays empty. Anthropic (optional) is configured at runtime via ANTHROPIC_API_KEY / ModelRuntime.setRuntimeApiKey, not via this file.",
+  "providers": {}
+}
