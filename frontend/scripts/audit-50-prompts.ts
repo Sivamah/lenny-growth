@@ -21,7 +21,7 @@ import type { ChatEvent } from "../src/types";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = resolve(HERE, "..", "..");
-const RESULTS_PATH = process.env.AUDIT_RESULTS ?? join(PROJECT_ROOT, "DEEPSEEK_50_PROMPT_RESULTS.json");
+const RESULTS_PATH = process.env.AUDIT_RESULTS ?? join(PROJECT_ROOT, "docs", "reports", "DEEPSEEK_50_PROMPT_RESULTS.json");
 
 const BASE = process.env.AUDIT_BASE_URL ?? "http://127.0.0.1:8000";
 const SESSION_TITLE_PREFIX = "AUDIT-50:";

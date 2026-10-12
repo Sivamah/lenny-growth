@@ -52,6 +52,24 @@ A production-grade, full-stack AI research workspace and growth assistant built 
 
 ---
 
+## Repository Structure
+
+```
+lenny-growth-assistant-v2/
+├── frontend/               # React 19 + Vite + TypeScript user interface
+├── backend/                # FastAPI async backend, PostgreSQL persistence, retrieval
+├── agent-service/          # Node.js/TypeScript agent runtime (Pi SDK + Ollama)
+├── data/                   # Manifest & README (raw transcripts git-ignored)
+├── docs/
+│   └── reports/            # Quality reports, DeepSeek 50-prompt audit & benchmark results
+├── poc/                    # Phase 0 Pi SDK & Ollama compatibility experiments
+├── scripts/                # Verification scenarios (live e2e, salon scenario, fetch)
+├── docker-compose.yml      # Local PostgreSQL 16 + pgvector container
+└── README.md               # Architecture, setup, and verification guide
+```
+
+---
+
 ## Quickstart & Local Startup
 
 ### Prerequisites
@@ -78,7 +96,13 @@ uv run uvicorn app.main:app --host 127.0.0.1 --port 8000
 API Documentation available at: http://127.0.0.1:8000/docs  
 Health Check: http://127.0.0.1:8000/health
 
-### 3. Agent Service
+### 3. Transcript Ingestion (Optional for Fresh DB)
+```powershell
+# From backend directory (requires data/transcripts/ populated)
+uv run python scripts/ingest.py
+```
+
+### 4. Agent Service
 ```powershell
 cd agent-service
 npm install
@@ -86,13 +110,13 @@ npm start
 ```
 Listens on `http://127.0.0.1:8001`.
 
-### 4. Frontend
+### 5. Frontend
 ```powershell
 cd frontend
 npm install
 npm run dev
 ```
-Accessible at: http://localhost:5173/
+Accessible at: http://localhost:5173/ (with dev proxy to backend port 8000)
 
 ---
 
@@ -103,7 +127,7 @@ All regression test suites pass cleanly across all subsystems:
 ### Frontend Tests
 ```powershell
 cd frontend
-npm test             # 28 passing Vitest tests
+npm test             # 31 passing Vitest tests across 5 test files
 npm run typecheck    # 0 TypeScript diagnostics
 npm run build        # Production bundle generated successfully
 ```
@@ -111,15 +135,23 @@ npm run build        # Production bundle generated successfully
 ### Agent Service Tests
 ```powershell
 cd agent-service
-npm test             # Full suite including live Ollama turn test
-npm run test:unit    # Unit test suite (37 passing tests across 5 suites)
+npm run test:unit    # 101 passing unit tests across 18 test suites
 npm run typecheck    # 0 TypeScript diagnostics
 ```
 
 ### Backend Tests
 ```powershell
 cd backend
-uv run python -m pytest -v    # 98 test items (96 passed, 2 skipped, 0 failed)
+uv run python -m pytest tests -v   # 167 test items (165 passed, 2 skipped [db-dependent], 0 failed)
+```
+
+### Verification Scripts
+```powershell
+# End-to-end live scenario suite
+python scripts/verify_live_scenarios.py
+
+# Multi-turn salon business constraint verification
+python scripts/verify_salon_e2e.py
 ```
 
 ---
@@ -128,4 +160,6 @@ uv run python -m pytest -v    # 98 test items (96 passed, 2 skipped, 0 failed)
 - **Strict Iframe Sandboxing**: Artifacts render in an iframe with `sandbox=""` (disables all script execution, top-level navigation, same-origin access).
 - **Content-Security-Policy (CSP)**: `default-src 'none'; style-src 'unsafe-inline'; font-src 'self'; img-src data: https:;`
 - **DOMPurify Sanitization**: HTML is sanitized removing active script tags, inline event handlers, and embedded objects before iframe embedding.
+- **Server-Side Sanitization**: Bleach + tinycss2 sanitize HTML and Markdown artifacts on write and read.
 - **Environment Secrets Exclusion**: `.env` and `**/.env` are strictly git-ignored; `.env.example` templates provide non-sensitive defaults.
+

@@ -121,7 +121,7 @@ The shipped calibration doc says in-corpus ≥ 0.631; my independent probe set (
 - **No user data altered.** Baseline counts restored after the audit: sessions 56, messages 117, artifacts 3, transcripts 10, chunks 1567. The one orphan `AUDIT-` session from an interrupted first benchmark run was deleted (`DELETE /sessions/...→ 204`).
 - **No secrets committed/moved.** `INTERNAL_TOKEN` (18 chars) is set on both services and enforced; verified only masks in this report.
 - **Reference copy untouched** (`D:\lenny-growth-assistant-main`, mtime unchanged); project dir is not a git repo; nothing pushed, uploaded, or force-changed.
-- **Temporary evidence** lives at the project root: `DEEPSEEK_50_PROMPT_RESULTS.json` (all 50 per-prompt results incl. observed text/citations), `frontend/audit-50.log` (stdout buffer, mostly empty by design), `agent-restarted.log`.
+- **Benchmark evidence** lives in `docs/reports/`: `DEEPSEEK_50_PROMPT_RESULTS.json` (all 50 per-prompt results incl. observed text/citations).
 
 ## 8. Files touched this audit
 

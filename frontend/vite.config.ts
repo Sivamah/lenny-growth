@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
         "/health": { target: backendTarget, changeOrigin: true },
         "/api": { target: backendTarget, changeOrigin: true },
         "/sessions": { target: backendTarget, changeOrigin: true },
+        "/artifacts": { target: backendTarget, changeOrigin: true },
       },
     },
     preview: {
