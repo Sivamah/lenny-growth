@@ -158,22 +158,24 @@ Before running manual test scenarios, ensure that all services are operational:
 
 ---
 
-### TC-10: Ship 30 for 30 Essay Skill
-- **Objective**: Verify that the dedicated Essay skill produces structured, high-impact short essays.
+### TC-10: Ship 30 for 30 Essay Generation (~1,250 Words)
+- **Objective**: Verify that the dedicated Essay skill produces comprehensive, well-structured Ship 30 essays targeting ~1,250 words (acceptance band: 800–2,200 words) with multi-stage expansion and validation.
 - **Steps**:
-  1. In a new conversation, click the `✍️ Essay` skill pill above the input box.
-  2. Complete the prompt:
+  1. In a new conversation, click the `✍️ Essay` skill pill above the input box (or prompt with explicit Ship 30 essay instructions).
+  2. Enter the prompt:
      ```text
-     The power of high pricing in bootstrapped software
+     Write a comprehensive Ship 30 for 30 style essay on how B2B SaaS companies find product-market fit, drawing on insights from Jason Cohen and Elena Verna.
      ```
-  3. Submit the message.
+  3. Submit the message and wait for generation and verification.
 - **Expected Results**:
-  - The output follows the Ship 30 framework:
-    - A strong headline.
-    - An engaging single-sentence hook.
-    - 3 concise, punchy subheadings with bullet points.
-    - An actionable takeaway closing section.
-  - Word count targets approximately 1,250 words (validator acceptance band: 800–2,200 words).
+  - The output strictly satisfies the Ship 30 for 30 architectural criteria:
+    - An arresting single-sentence hook.
+    - 4–5 substantial markdown sections under `##` headings analyzing tradeoffs and strategic mechanics.
+    - Selective `**bold**` emphasis on high-impact sentences.
+    - Grounded transcript quotes and attributions (Jason Cohen and Elena Verna).
+    - A concrete, actionable takeaway section at the end.
+  - **Word Count**: If the initial draft is below 800 words, the agent service automatically triggers an expansion pass, developing the existing arguments with concrete examples to reach approximately 1,250 words within the configured 800–2,200 acceptance band.
+  - Final word count is displayed and recorded without fabricating quotes.
 
 ---
 
@@ -238,3 +240,41 @@ Before running manual test scenarios, ensure that all services are operational:
        - Tapping `☰` slides sidebar in from the left over a dark backdrop.
        - Tapping the backdrop or "+ New conversation" closes the drawer.
        - Composer remains sticky and fully visible above mobile viewport bottom.
+
+---
+
+### TC-15: Complete Website Creation & In-App Artifact Viewer
+- **Objective**: Verify that user requests to build a website/landing page produce a complete, polished HTML/CSS artifact rendered directly in the in-app Artifact Viewer beside the chat, with Preview/Source tabs and follow-up revision support.
+- **Steps**:
+  1. Start a fresh conversation.
+  2. Submit the following prompt:
+     ```text
+     Create a polished, responsive landing page for an AI-powered productivity startup. Include a navigation bar, hero section, clear headline and call to action, feature cards, a how-it-works section, testimonials, pricing plans and a footer. Use a cohesive modern visual design, responsive desktop and mobile layouts, and realistic sample content. Create it as a complete HTML/CSS artifact and open it in the Artifact Viewer beside the chat.
+     ```
+  3. Observe the response stream and the Artifact Viewer panel on the right side of the chat.
+  4. Test the **Preview / Source** view mode toggle in the artifact header:
+     - Click **Preview**: View the live-rendered landing page inside the sandboxed iframe.
+     - Click **Source**: View the formatted raw HTML/CSS source code.
+     - Click **Preview** again: Verify return to live rendered preview.
+  5. Test responsive sizing:
+     - Check navigation bar, hero section, 3-column feature cards, pricing grid, and footer at full width.
+     - Narrow browser window or inspect at 390px mobile viewport: verify CSS media queries adapt layout gracefully.
+  6. Test follow-up revision:
+     - Enter prompt:
+       ```text
+       Change the theme to dark navy and violet, and simplify the hero section
+       ```
+     - Submit and observe generation.
+- **Expected Results**:
+  - A real HTML artifact is generated (`kind="html"`) with full embedded CSS styling.
+  - The Artifact Viewer opens automatically beside the chat (split view on desktop, full drawer on mobile).
+  - The page includes:
+    - Full-bleed navigation bar with brand logo and navigation links.
+    - Prominent hero section with high-converting headline, subheadline, and CTA buttons.
+    - Responsive feature cards with modern card borders and typography.
+    - Step-by-step how-it-works workflow section.
+    - Realistic customer testimonials and pricing tier comparison cards.
+    - Complete footer with links and copyright.
+  - **Security**: The page renders safely inside `sandbox=""` iframe with CSP `default-src 'none'; style-src 'unsafe-inline'`. No unsafe scripts run.
+  - **Persistence**: Reloading the page (`F5`) restores the session and allows clicking "View Artifact" to inspect the stored artifact from PostgreSQL.
+  - **Revision**: Follow-up prompt updates CSS variables (e.g. `--primary-color: #2f4f7f`, `--secondary-color: #8e24aa`) and simplifies hero content without breaking layout or losing session context.

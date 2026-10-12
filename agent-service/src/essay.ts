@@ -20,31 +20,61 @@ export const ESSAY_MAX_RETRIES = 1;
  * guidelines: when `grounded` is false the essay must say so instead of
  * fabricating facts.
  */
-const ESSAY_INSTRUCTIONS = `You are writing a "Ship 30 for 30" style essay of roughly 1,250 words.
+const ESSAY_INSTRUCTIONS = `You are writing an in-depth "Ship 30 for 30" style essay of approximately 1,250 words (acceptable range: 800–2,200 words).
 
 Meet every requirement below:
 1. OPEN with a hook: 1-2 sentences that grab the reader, then set up the core tension of the essay.
-2. Organise the body with markdown ## SECTION HEADINGS (at least two sections) that carry a narrative from opener to payoff.
-3. Emphasise key phrases with **bold** (a bolded thesis statement is a good idea).
-4. Ground every substantive claim in the search_transcripts tool results: name the episode and the guest, and quote or closely paraphrase the returned chunk. Attribute ideas explicitly (for example: "In Lenny's Podcast episode with <guest>, they point out that ...").
-5. END with an "Actionable takeaway" section that gives the reader one concrete thing to do this week, based on the source material.
-6. If search_transcripts reports grounded=false (the transcripts do not cover the topic), say so plainly in the essay and do not invent guests, quotes, episodes, or facts.
-7. Aim for ~1,250 words. Output ONLY the finished essay markdown - no preamble, no "here is", no summary afterwards.`;
+2. Organise the body with markdown ## SECTION HEADINGS (include at least 4-5 substantial, detailed sections) that carry a narrative from opener to payoff.
+3. In each section, thoroughly develop the core idea with 2-3 detailed paragraphs: explain the underlying mechanics, provide concrete real-world startup scenarios, analyze trade-offs, and cite relevant guest perspectives from Lenny's Podcast.
+4. Emphasise key phrases with **bold** (a bolded thesis statement is a good idea).
+5. Ground every substantive claim in the search_transcripts tool results: name the episode and the guest, and quote or closely paraphrase the returned chunk. Attribute ideas explicitly (for example: "In Lenny's Podcast episode with <guest>, they point out that ...").
+6. END with an "Actionable takeaway" section that gives the reader concrete things to do this week, based on the source material.
+7. If search_transcripts reports grounded=false (the transcripts do not cover the topic), say so plainly in the essay and do not invent guests, quotes, episodes, or facts.
+8. Aim for roughly 1,250 words. Be comprehensive and thorough, not brief. Output ONLY the finished essay markdown - no preamble, no "here is", no summary afterwards.`;
 
 export function buildEssayPrompt(userPrompt: string): string {
   return `${ESSAY_INSTRUCTIONS}\n\n---\n\n${userPrompt}`;
 }
 
+export function buildExpansionPrompt(
+  previousDraft: string,
+  userPrompt: string,
+  currentCount: number,
+  targetCount: number = ESSAY_TARGET_WORDS,
+): string {
+  return `A "Ship 30" essay review found that your previous draft was too short (${currentCount} words; target is ~${targetCount} words, minimum ${ESSAY_MIN_WORDS} words).
+
+Previous draft:
+---
+${previousDraft}
+---
+
+EXPAND this draft into a comprehensive, high-depth essay of approximately 1,250 words (minimum ${ESSAY_MIN_WORDS} words):
+1. Keep the existing title, hook, section headings, guest attributions, and closing "Actionable takeaway" section.
+2. For EVERY section, add 2-3 substantive paragraphs with concrete examples, operational mechanics, startup case studies, and tactical playbooks.
+3. Add 1-2 additional in-depth sections (## ...) exploring strategic nuances and execution pitfalls.
+4. Keep all claims grounded in the podcast search results and attribute each guest properly.
+5. Output ONLY the COMPLETE, finished expanded markdown essay.
+
+Original request: ${userPrompt}`;
+}
+
 export function buildCorrectivePrompt(
   userPrompt: string,
   validation: EssayValidation,
+  previousDraft?: string,
 ): string {
+  const isShort = validation.issues.some((issue) => /below.*minimum|minimum.*below/.test(issue));
+  if (isShort && previousDraft) {
+    return buildExpansionPrompt(previousDraft, userPrompt, validation.wordCount);
+  }
+
   const bullet = validation.issues.map((issue) => `- ${issue}`).join("\n");
   return `A "Ship 30" essay review found the following issues in your previous draft:
 
 ${bullet}
 
-Rewrite the essay from scratch so every issue is fixed. Keep it grounded in the search_transcripts results (name the episode and guest, attribute each claim), aim for ~1,250 words, and output ONLY the finished markdown essay with a hook, at least two ## headings, **bold** emphasis, and a closing "Actionable takeaway" section.
+Rewrite the essay so every issue is fixed. Keep it grounded in the search_transcripts results (name the episode and guest, attribute each claim), aim for ~1,250 words (minimum ${ESSAY_MIN_WORDS} words), and output ONLY the finished markdown essay with a hook, at least two ## headings, **bold** emphasis, and a closing "Actionable takeaway" section.
 
 Original request: ${userPrompt}`;
 }
@@ -201,10 +231,17 @@ export async function runEssayTurn(
     let draft = await runPass(buildEssayPrompt(userPrompt));
     let validation = validateEssay(draft);
 
-    if (!validation.pass && !abortRequested && !errorMessage && !willRetry && retries < maxRetries) {
+    while (!validation.pass && !abortRequested && !errorMessage && !willRetry && retries < maxRetries) {
       retries += 1;
-      draft = await runPass(buildCorrectivePrompt(userPrompt, validation));
-      validation = validateEssay(draft);
+      const revised = await runPass(buildCorrectivePrompt(userPrompt, validation, draft));
+      const nextValidation = validateEssay(revised);
+      if (nextValidation.pass || nextValidation.wordCount > validation.wordCount) {
+        draft = revised;
+        validation = nextValidation;
+      } else if (nextValidation.wordCount > 0) {
+        draft = revised;
+        validation = nextValidation;
+      }
     }
 
     return { text: draft, validation, retries, aborted: abortRequested, errorMessage };

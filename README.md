@@ -11,7 +11,7 @@ A production-grade, full-stack AI research workspace and growth assistant built 
 | **[PRD.md](file:///D:/oogway%20project/lenny-growth-assistant-v2/PRD.md)** | Product Requirements Document: Discovery brief, user problems, metrics, assumptions, scope, risks, acceptance criteria, and plan. |
 | **[design.md](file:///D:/oogway%20project/lenny-growth-assistant-v2/design.md)** | UI/UX & Design Specification: Design tokens, component breakdown, interaction patterns, Canvas Studio paradigm, and responsiveness. |
 | **[architecture.md](file:///D:/oogway%20project/lenny-growth-assistant-v2/architecture.md)** | Architecture Specification: System diagrams, data flow, PostgreSQL/pgvector schema, API endpoint catalog, retrieval pipeline, and routing. |
-| **[docs/manual-test-plan.md](file:///D:/oogway%20project/lenny-growth-assistant-v2/docs/manual-test-plan.md)** | Step-by-step manual test plan with 14 test cases, exact inputs, verification commands, and expected results. |
+| **[docs/manual-test-plan.md](file:///D:/oogway%20project/lenny-growth-assistant-v2/docs/manual-test-plan.md)** | Step-by-step manual test plan with 15 test cases, exact inputs, verification commands, and expected results. |
 | **[PROJECT_STRUCTURE_AUDIT.md](file:///D:/oogway%20project/lenny-growth-assistant-v2/PROJECT_STRUCTURE_AUDIT.md)** | Architectural audit of the repository cleanup, port maps, and configuration synchronizations. |
 | **[agent-transcripts/](file:///D:/oogway%20project/lenny-growth-assistant-v2/agent-transcripts/)** | Genuine historical agent transcripts extracted from runtime SQLite logs (Phase 0 to Final Submission), documenting failed attempts, bug investigations, and fixes. |
 
@@ -93,7 +93,7 @@ lenny-growth-assistant-v2/
 ├── agent-service/          # Node.js/TypeScript agent runtime (Pi SDK + Ollama)
 ├── data/                   # Manifest & README (raw transcripts git-ignored)
 ├── docs/                   # Documentation & manuals
-│   ├── manual-test-plan.md # 14 end-to-end manual verification test cases
+│   ├── manual-test-plan.md # 15 end-to-end manual verification test cases
 │   └── reports/            # Audits, DeepSeek 50-prompt benchmark results
 ├── agent-transcripts/      # Genuine execution logs extracted from SQLite agent DB
 ├── poc/                    # Phase 0 Pi SDK & Ollama compatibility experiments (01-05)
@@ -205,11 +205,11 @@ npm run build
 
 ### 2. Workspace-Specific Test Commands
 ```bash
-# Frontend tests only (Vitest)
+# Frontend tests only (Vitest - 34 passed tests)
 npm test -w frontend
 npm run typecheck -w frontend
 
-# Agent Service unit tests only (102 tests across 18 test suites)
+# Agent Service unit tests only (106 tests across 18 test suites)
 npm run test:unit -w agent-service
 npm run typecheck -w agent-service
 ```
@@ -217,7 +217,7 @@ npm run typecheck -w agent-service
 ### 3. Backend Tests
 ```bash
 cd backend
-uv run python -m pytest tests -v   # 167 passed test items
+uv run python -m pytest tests -v   # 170 passed test items
 ```
 
 ### 4. End-to-End Live Verification Scripts

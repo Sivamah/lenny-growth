@@ -96,4 +96,25 @@ describe("artifact pipeline", () => {
     assert.doesNotMatch(res.explanation, /\{"name"/);
     assert.equal(res.aborted, false);
   });
+
+  it("builds website artifact prompt with responsive guidelines and sections", () => {
+    const prompt = buildArtifactPrompt("Create a responsive landing page for an AI startup");
+    assert.match(prompt, /complete, polished, self-contained HTML\/CSS website/);
+    assert.match(prompt, /embedded <style> block/);
+    assert.match(prompt, /Navigation bar/);
+    assert.match(prompt, /Hero section/);
+    assert.match(prompt, /Pricing plans/);
+  });
+
+  it("extracts complete HTML website with embedded style and nav/hero sections", () => {
+    const raw = `Here is your website landing page.\n\n\`\`\`html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>NexusAI - Intelligent Productivity</title>\n  <style>\n    body { font-family: sans-serif; margin: 0; background: #0f172a; }\n    .hero { display: flex; flex-direction: column; align-items: center; padding: 4rem 2rem; }\n  </style>\n</head>\n<body>\n  <nav class="nav"><h1>NexusAI</h1></nav>\n  <section class="hero"><h2>Supercharge Your Workflow</h2></section>\n</body>\n</html>\n\`\`\`\n\nEnjoy!`;
+    const result = extractArtifact(raw);
+
+    assert.equal(result.kind, "html");
+    assert.equal(result.title, "NexusAI - Intelligent Productivity");
+    assert.match(result.content, /<style>/);
+    assert.match(result.content, /display: flex/);
+    assert.match(result.content, /NexusAI/);
+    assert.match(result.explanation, /Here is your website landing page/);
+  });
 });

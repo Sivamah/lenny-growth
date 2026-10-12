@@ -42,10 +42,10 @@ __all__ = ["sanitize_html", "sanitize_markdown", "sanitize_artifact"]
 
 ALLOWED_TAGS: frozenset[str] = frozenset(
     """
-    a abbr article aside b blockquote br caption cite code col colgroup data dd
+    a abbr article aside b blockquote br button caption cite code col colgroup data dd
     del details dfn div dl dt em figcaption figure footer h1 h2 h3 h4 h5 h6
-    header hr i img ins kbd li main mark nav ol p pre q s samp section small
-    span strong sub summary sup table tbody td tfoot th thead time tr u ul var
+    header hr i img input ins kbd label li main mark nav ol option p pre q s samp section select small
+    span strong style sub summary sup table tbody td tfoot th thead time tr u ul var
     wbr
     """.split()
 )
@@ -60,16 +60,24 @@ ALLOWED_ATTRIBUTES: dict[str, list[str]] = {
     "th": ["colspan", "rowspan", "scope"],
     "ol": ["start", "reversed"],
     "time": ["datetime"],
+    "button": ["type", "disabled", "name", "value"],
+    "input": ["type", "placeholder", "value", "disabled", "readonly", "name"],
+    "label": ["for"],
+    "style": ["type"],
 }
 
 ALLOWED_PROTOCOLS: tuple[str, ...] = ("http", "https", "mailto", "tel")
 
 ALLOWED_CSS_PROPERTIES: tuple[str, ...] = (
-    "color", "background-color", "font-family", "font-size", "font-style",
-    "font-weight", "line-height", "text-align", "text-decoration",
-    "text-transform", "letter-spacing", "word-break", "overflow-wrap",
-    "white-space", "vertical-align", "visibility", "display", "float",
-    "list-style", "list-style-type", "border-collapse",
+    "color", "background-color", "background",
+    "font-family", "font-size", "font-style", "font-weight", "line-height", "text-align", "text-decoration",
+    "text-transform", "letter-spacing", "word-break", "overflow-wrap", "white-space", "vertical-align", "visibility",
+    "display", "flex", "flex-direction", "flex-wrap", "flex-flow", "flex-grow", "flex-shrink", "flex-basis",
+    "justify-content", "align-items", "align-content", "align-self", "gap", "row-gap", "column-gap",
+    "grid", "grid-template-columns", "grid-template-rows", "grid-gap",
+    "box-shadow", "box-sizing", "cursor", "z-index", "position", "top", "bottom", "left", "right",
+    "overflow", "overflow-x", "overflow-y", "min-width", "min-height", "opacity", "transform", "transition",
+    "float", "list-style", "list-style-type", "border-collapse",
     "margin", "margin-top", "margin-right", "margin-bottom", "margin-left",
     "padding", "padding-top", "padding-right", "padding-bottom", "padding-left",
     "border", "border-top", "border-right", "border-bottom", "border-left",

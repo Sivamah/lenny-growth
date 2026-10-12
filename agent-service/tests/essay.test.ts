@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import type { AgentSessionEvent } from "@earendil-works/pi-coding-agent";
 import {
   buildCorrectivePrompt,
+  buildExpansionPrompt,
   runEssayTurn,
   validateEssay,
   wordCount,
@@ -252,4 +253,28 @@ test("runEssayTurn does not retry after an abort", async () => {
   assert.equal(result.retries, 0);
   assert.equal(result.text, "");
   assert.equal(stub.prompts.length, 1);
+});
+
+test("buildExpansionPrompt formats draft, current word count, and 1250 target", () => {
+  const short = probe(300);
+  const prompt = buildExpansionPrompt(short, "Write about pricing", 320);
+  assert.match(prompt, /320 words/);
+  assert.match(prompt, /1,250 words/);
+  assert.match(prompt, /EXPAND/);
+  assert.match(prompt, /Ada Cohen/);
+});
+
+test("runEssayTurn with a short draft expands to full ~1,250 words", async () => {
+  const shortDraft = probe(400);
+  const fullDraft = probe(1150);
+  const stub = stubSession([shortDraft, fullDraft]);
+  const result = await runEssayTurn(stub.session, "Write about pricing", (wire) => stub.wires.push(wire));
+
+  assert.equal(result.retries, 1);
+  assert.equal(stub.prompts.length, 2);
+  assert.match(stub.prompts[1]!, /EXPAND/);
+  assert.match(stub.prompts[1]!, /too short/);
+  assert.equal(result.validation.pass, true);
+  assert.equal(result.text, fullDraft);
+  assert.ok(result.validation.wordCount >= ESSAY_MIN_WORDS && result.validation.wordCount <= ESSAY_MAX_WORDS);
 });

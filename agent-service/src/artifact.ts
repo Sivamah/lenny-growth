@@ -6,17 +6,36 @@ import {
 
 export const ARTIFACT_SKILL_NAME = "artifact";
 
-const ARTIFACT_INSTRUCTIONS = `You are generating a standalone artifact.
+const WEBSITE_ARTIFACT_INSTRUCTIONS = `You are generating a standalone artifact: a complete, polished, self-contained HTML/CSS website.
+CRITICAL: DO NOT use any tools. DO NOT output JSON. You must generate the full report content yourself.
+Output the main content inside a SINGLE fenced code block (\`\`\`html).
+Include a brief explanatory message outside the block.
+
+Requirements for the website:
+1. Complete self-contained HTML with an embedded <style> block.
+2. Modern responsive layout with flexbox/grid and mobile breakpoints (@media (max-width: 768px)).
+3. Clean modern design system: harmonious colors, typography, card shadows, rounded corners, button hover states.
+4. Rich sections with realistic content: Navigation bar, Hero section with clear headline & CTA buttons, Feature cards, How-It-Works steps, Testimonials/Social proof, Pricing plans, and Footer.
+5. Do NOT include <script> tags. Use clean semantic HTML and CSS.`;
+
+const DOCUMENT_ARTIFACT_INSTRUCTIONS = `You are generating a standalone artifact.
 CRITICAL: DO NOT use any tools. DO NOT output JSON. You must generate the full report content yourself.
 Output the main content inside a SINGLE fenced code block (either \`\`\`html or \`\`\`markdown).
 Include a brief explanatory message outside the block.
 Use an <h1> or # for the title inside the block if appropriate.`;
 
 export function buildArtifactPrompt(userPrompt: string): string {
-  return `${ARTIFACT_INSTRUCTIONS}\n\n---\n\n${userPrompt}`;
+  const isWebsite = /\b(website|landing\s*page|webpage|web\s*page|html|responsive|hero|navbar|navigation|pricing|dashboard|mockup|ui|frontend|css|theme)\b/i.test(userPrompt);
+  const instructions = isWebsite ? WEBSITE_ARTIFACT_INSTRUCTIONS : DOCUMENT_ARTIFACT_INSTRUCTIONS;
+  return `${instructions}\n\n---\n\n${userPrompt}`;
 }
 
 function extractTitle(content: string): string | undefined {
+  const titleMatch = content.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  if (titleMatch?.[1]) {
+    const t = titleMatch[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    if (t) return t;
+  }
   const h1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   if (h1Match?.[1]) {
     return h1Match[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
@@ -63,11 +82,21 @@ export function extractArtifact(text: string): { explanation: string; kind: "htm
     }
   }
 
-  const match = cleanText.match(/```(html|markdown)\n([\s\S]*?)\n```/i);
+  const match = cleanText.match(/```(html|markdown)\s*\n?([\s\S]*?)(?:```|$)/i);
   if (!match || !match[1] || match[2] === undefined) {
     // Fallback if the model just dumps bare HTML
     const fallbackTrimmed = cleanText.trim();
-    if (fallbackTrimmed.startsWith("<html") || fallbackTrimmed.startsWith("<!DOCTYPE")) {
+    if (
+      fallbackTrimmed.startsWith("<html") ||
+      fallbackTrimmed.startsWith("<!DOCTYPE") ||
+      fallbackTrimmed.startsWith("<style") ||
+      fallbackTrimmed.startsWith("<div") ||
+      fallbackTrimmed.startsWith("<nav") ||
+      fallbackTrimmed.startsWith("<header") ||
+      fallbackTrimmed.startsWith("<section") ||
+      fallbackTrimmed.startsWith("<article") ||
+      fallbackTrimmed.includes("</style>")
+    ) {
       return { explanation: "Here is your requested HTML artifact.", kind: "html", content: fallbackTrimmed, title: extractTitle(fallbackTrimmed), hasToolCall };
     }
     

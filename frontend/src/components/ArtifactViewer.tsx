@@ -10,6 +10,7 @@ export interface ArtifactViewerProps {
 
 export function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
   const [content, setContent] = useState<string>("");
+  const [viewMode, setViewMode] = useState<"preview" | "source">("preview");
 
   useEffect(() => {
     if (!artifact) {
@@ -20,7 +21,9 @@ export function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
     if (artifact.kind === "markdown") {
       const processMarkdown = async () => {
         const rawHtml = await marked.parse(artifact.content);
-        const cleanHtml = DOMPurify.sanitize(rawHtml);
+        const cleanHtml = DOMPurify.sanitize(rawHtml, {
+          ADD_TAGS: ["style"],
+        });
         setContent(cleanHtml);
       };
       void processMarkdown();
@@ -29,6 +32,8 @@ export function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
       const cleanHtml = DOMPurify.sanitize(artifact.content, {
         FORBID_TAGS: ["script", "form", "meta", "base", "object", "embed", "iframe"],
         FORBID_ATTR: ["onerror", "onload", "onclick", "onmouseover", "onkeydown", "onkeyup", "onkeypress"],
+        ADD_TAGS: ["style"],
+        WHOLE_DOCUMENT: true,
         ALLOW_DATA_ATTR: false,
       });
       setContent(cleanHtml);
@@ -45,8 +50,15 @@ export function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
 
   // The CSP prevents script execution and remote resources.
   const csp = "default-src 'none'; style-src 'unsafe-inline'; font-src 'self'; img-src data: https:;";
-  const iframeSrcDoc = `
-    <!DOCTYPE html>
+  const isHtml = artifact.kind === "html";
+  const iframeSrcDoc = isHtml
+    ? content.includes("<head")
+      ? content.replace(
+          /<head[^>]*>/i,
+          `$&<meta http-equiv="Content-Security-Policy" content="${csp}">`,
+        )
+      : `<!DOCTYPE html><html><head><meta http-equiv="Content-Security-Policy" content="${csp}"><style>body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }</style></head><body>${content}</body></html>`
+    : `<!DOCTYPE html>
     <html>
       <head>
         <meta http-equiv="Content-Security-Policy" content="${csp}">
@@ -67,8 +79,7 @@ export function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
       <body>
         ${content}
       </body>
-    </html>
-  `;
+    </html>`;
 
   return (
     <div className="artifact-viewer">
@@ -77,17 +88,45 @@ export function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
           <h3>{artifact.title || "Generated Artifact"}</h3>
           <span className="artifact-badge">{artifact.kind.toUpperCase()}</span>
         </div>
+        <div className="artifact-view-toggle" role="tablist" aria-label="Artifact view mode">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === "preview"}
+            className={`artifact-toggle-btn ${viewMode === "preview" ? "active" : ""}`}
+            onClick={() => setViewMode("preview")}
+          >
+            Preview
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === "source"}
+            className={`artifact-toggle-btn ${viewMode === "source" ? "active" : ""}`}
+            onClick={() => setViewMode("source")}
+          >
+            Source
+          </button>
+        </div>
         <button onClick={onClose} className="artifact-close-btn" aria-label="Close artifact">
           ✕
         </button>
       </div>
       <div className="artifact-content-wrapper">
-        <iframe
-          title={artifact.title || "Artifact"}
-          sandbox="" // empty string means NO permissions: no scripts, no same-origin, etc.
-          srcDoc={iframeSrcDoc}
-          className="artifact-iframe"
-        />
+        {viewMode === "preview" ? (
+          <iframe
+            title={artifact.title || "Artifact"}
+            sandbox="" // empty string means NO permissions: no scripts, no same-origin, etc.
+            srcDoc={iframeSrcDoc}
+            className="artifact-iframe"
+          />
+        ) : (
+          <div className="artifact-source-view">
+            <pre>
+              <code>{artifact.content}</code>
+            </pre>
+          </div>
+        )}
       </div>
     </div>
   );

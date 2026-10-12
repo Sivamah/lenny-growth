@@ -233,3 +233,28 @@ def test_sanitize_html_is_idempotent(payload):
 def test_sanitize_markdown_is_idempotent(payload):
     once = sanitize_markdown(payload)
     assert sanitize_markdown(once) == once
+
+
+def test_html_preserves_website_layout_and_styles_while_dropping_scripts():
+    site = """
+    <style>
+      .hero { display: flex; flex-direction: column; gap: 1rem; background: #0f172a; padding: 2rem; }
+      .btn { color: white; padding: 0.5rem 1rem; border-radius: 4px; }
+    </style>
+    <nav><h1>Nexus AI</h1></nav>
+    <section class="hero">
+      <h2>Intelligent Productivity</h2>
+      <button class="btn">Get Started</button>
+      <input type="email" placeholder="Your email">
+    </section>
+    <script>alert('xss')</script>
+    <img src=x onerror=alert(1)>
+    """
+    cleaned = sanitize_html(site)
+    assert "<style>" in cleaned
+    assert "display: flex" in cleaned
+    assert "<button" in cleaned
+    assert "<nav>" in cleaned
+    assert "<section" in cleaned
+    assert "<script" not in cleaned
+    assert "onerror" not in cleaned
