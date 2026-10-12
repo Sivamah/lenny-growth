@@ -5,6 +5,7 @@ export interface RetrievalChunk {
   transcript_slug?: string;
   episode_title?: string;
   guest?: string;
+  speaker?: string;
   timestamp?: string;
   source_url?: string;
   content: string;

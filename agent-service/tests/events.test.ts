@@ -333,3 +333,60 @@ test("readAgentEndInfo extracts an error stop reason", () => {
 test("readAgentEndInfo returns empty for non-agent_end events", () => {
   assert.deepEqual(readAgentEndInfo(asEvent({ type: "turn_start" })), {});
 });
+
+test("extractCitationsFromResult populates index 1..N, speaker, and chunk_id correctly", () => {
+  const result = {
+    details: {
+      results: [
+        {
+          chunk_id: "chk-001",
+          speaker: "Jason Cohen",
+          episode_title: "Pricing Strategy",
+          start_timestamp: "00:15:30",
+          content: "Charge more money.",
+          score: 0.88,
+        },
+        {
+          chunk_id: "chk-002",
+          start_speaker: "Elena Verna",
+          guest: "Elena Verna",
+          episode_title: "B2B PLG",
+          timestamp: "00:08:45",
+          content: "Loops are superior to funnels.",
+          score: 0.79,
+        },
+        {
+          chunk_id: "chk-003",
+          guest: "Brian Balfour",
+          episode_title: "Four Fits",
+          content: "Product market fit is dynamic.",
+          score: 0.71,
+        },
+      ],
+    },
+  };
+
+  const citations = extractCitationsFromResult(result);
+  assert.equal(citations.length, 3);
+
+  // Citation 1: speaker field preserved
+  assert.equal(citations[0]?.index, 1);
+  assert.equal(citations[0]?.chunk_id, "chk-001");
+  assert.equal(citations[0]?.speaker, "Jason Cohen");
+  assert.equal(citations[0]?.episode, "Pricing Strategy");
+  assert.equal(citations[0]?.timestamp, "00:15:30");
+  assert.equal(citations[0]?.snippet, "Charge more money.");
+  assert.equal(citations[0]?.score, 0.88);
+
+  // Citation 2: start_speaker fallback
+  assert.equal(citations[1]?.index, 2);
+  assert.equal(citations[1]?.chunk_id, "chk-002");
+  assert.equal(citations[1]?.speaker, "Elena Verna");
+  assert.equal(citations[1]?.timestamp, "00:08:45");
+
+  // Citation 3: guest fallback when speaker/start_speaker absent
+  assert.equal(citations[2]?.index, 3);
+  assert.equal(citations[2]?.chunk_id, "chk-003");
+  assert.equal(citations[2]?.speaker, "Brian Balfour");
+  assert.equal(citations[2]?.timestamp, undefined);
+});

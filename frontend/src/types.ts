@@ -8,12 +8,15 @@ export interface SessionSummary {
 
 /** A transcript citation returned by the backend (agent `search_transcripts`). */
 export interface Citation {
+  index?: number;
   guest: string | null;
+  speaker?: string | null;
   episode: string | null;
   timestamp: string | null;
   url: string | null;
   snippet: string | null;
   score: number | null;
+  chunk_id?: string;
 }
 
 export interface Grounding {

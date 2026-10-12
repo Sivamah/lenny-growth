@@ -3,6 +3,9 @@ import type { AgentSessionEvent } from "@earendil-works/pi-coding-agent";
 export const SEARCH_TOOL_NAME = "search_transcripts";
 
 export interface Citation {
+  index?: number;
+  chunk_id?: string;
+  speaker?: string;
   guest?: string;
   episode?: string;
   timestamp?: string;
@@ -41,10 +44,14 @@ export type WireEvent =
   | { type: "artifact"; kind: "html" | "markdown"; content: string; title?: string };
 
 interface RetrievalChunkLike {
+  chunk_id?: unknown;
+  speaker?: unknown;
+  start_speaker?: unknown;
   guest?: unknown;
   episode_title?: unknown;
   episode?: unknown;
   timestamp?: unknown;
+  start_timestamp?: unknown;
   source_url?: unknown;
   url?: unknown;
   content?: unknown;
@@ -112,15 +119,22 @@ export function extractCitationsFromResult(result: unknown): Citation[] {
   const rawResults = payload?.results;
   if (!Array.isArray(rawResults)) return [];
   return rawResults
-    .map((raw): Citation => {
+    .map((raw, idx): Citation => {
       const chunk = (raw ?? {}) as RetrievalChunkLike;
       const content = asString(chunk.content);
+      const speaker =
+        asString(chunk.speaker) ??
+        asString(chunk.start_speaker) ??
+        asString(chunk.guest);
       return {
+        index: idx + 1,
+        chunk_id: asString(chunk.chunk_id),
+        speaker,
         guest: asString(chunk.guest),
         episode: asString(chunk.episode_title) ?? asString(chunk.episode),
-        timestamp: asString(chunk.timestamp),
+        timestamp: asString(chunk.timestamp) ?? asString(chunk.start_timestamp),
         url: asString(chunk.source_url) ?? asString(chunk.url),
-        snippet: content ? content.slice(0, 280) : undefined,
+        snippet: content ? content.slice(0, 320) : undefined,
         score: typeof chunk.score === "number" ? chunk.score : undefined,
       };
     })

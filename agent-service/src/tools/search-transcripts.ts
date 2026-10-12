@@ -29,7 +29,8 @@ export function createSearchTranscriptsTool(
     promptSnippet: "Search Lenny's Podcast transcripts for relevant teaching chunks",
     promptGuidelines: [
       "Use search_transcripts whenever the user asks what the podcast says about a topic.",
-      "Cite the episode and guest returned by search_transcripts in your answer.",
+      "Cite the episode and guest/speaker returned by search_transcripts in your answer.",
+      "Include numbered inline citation markers like [1], [2] directly after claims or sentences supported by the retrieved chunk, mapping [1] to the 1st search result, [2] to the 2nd, etc.",
       "If grounded is false, the transcripts likely do not cover the topic: say so clearly and do not invent citations or answers.",
     ],
     parameters: searchParameters(),

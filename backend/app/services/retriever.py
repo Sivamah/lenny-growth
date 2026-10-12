@@ -31,6 +31,7 @@ class RetrievedChunk:
     chunk_index: int
     content: str
     score: float
+    speaker: str | None = None
 
 
 @dataclass
@@ -91,6 +92,7 @@ class Retriever:
                            c.chunk_index,
                            c.content,
                            c.start_timestamp,
+                           c.start_speaker,
                            t.slug AS transcript_slug,
                            t.title AS episode_title,
                            t.guest,
@@ -110,14 +112,15 @@ class Retriever:
         return [
             RetrievedChunk(
                 chunk_id=str(row["chunk_id"]),
-                transcript_slug=row["transcript_slug"],
-                episode_title=row["episode_title"],
-                guest=row["guest"],
-                timestamp=row["start_timestamp"],
-                source_url=row["source_url"],
+                transcript_slug=row.get("transcript_slug"),
+                episode_title=row.get("episode_title") or "",
+                guest=row.get("guest"),
+                timestamp=row.get("start_timestamp"),
+                source_url=row.get("source_url"),
                 chunk_index=row["chunk_index"],
                 content=row["content"],
                 score=float(row["score"]),
+                speaker=row.get("start_speaker") or row.get("guest"),
             )
             for row in rows
         ]
@@ -150,6 +153,7 @@ class Retriever:
                     chunk_index=chunk.chunk_index,
                     content=chunk.content,
                     score=score,
+                    speaker=chunk.start_speaker or (transcript.guest if transcript else None),
                 )
             )
         return results

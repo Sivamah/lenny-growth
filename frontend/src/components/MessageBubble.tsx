@@ -18,6 +18,28 @@ function primaryScore(citations: ClientMessage["citations"]): number | null {
   );
 }
 
+/**
+ * Transforms inline citation markers such as `[1]` or `[1, 2]` into markdown anchor links
+ * e.g. `[1](#source-1)`, while strictly leaving code blocks and inline code intact.
+ */
+export function linkifyCitationMarkers(text: string): string {
+  if (!text) return "";
+  const parts = text.split(/(```[\s\S]*?```|`[^`]*`)/g);
+  return parts
+    .map((part) => {
+      if (part.startsWith("`")) return part;
+      // Handle comma-separated citations e.g. [1, 2]
+      let transformed = part.replace(/\[(\d+(?:\s*,\s*\d+)+)\](?!\()/g, (_match, group: string) => {
+        const nums = group.split(/\s*,\s*/);
+        return nums.map((n) => `[${n}](#source-${n})`).join(", ");
+      });
+      // Handle single citations e.g. [1]
+      transformed = transformed.replace(/\[(\d+)\](?!\()/g, "[$1](#source-$1)");
+      return transformed;
+    })
+    .join("");
+}
+
 function CodeBlock({ children, className }: { children: React.ReactNode; className?: string }) {
   const [copied, setCopied] = useState(false);
   const codeString = String(children).replace(/\n$/, "");
@@ -52,6 +74,7 @@ function CodeBlock({ children, className }: { children: React.ReactNode; classNa
 
 export function MessageBubble({ message }: { message: ClientMessage }) {
   const isUser = message.role === "user";
+  const [activeSourceIndex, setActiveSourceIndex] = useState<number | null>(null);
 
   let groundedState: "grounded" | "ungrounded" | "unknown" = "unknown";
   if (message.grounding) {
@@ -59,6 +82,20 @@ export function MessageBubble({ message }: { message: ClientMessage }) {
   }
 
   const best = primaryScore(message.citations);
+
+  const handleJumpToSource = (index: number) => {
+    setActiveSourceIndex(index);
+    const elementId = `source-${message.id}-${index}`;
+    const el = document.getElementById(elementId) || document.getElementById(`source-${index}`);
+    if (el) {
+      el.scrollIntoView?.({ behavior: "smooth", block: "nearest" });
+      el.focus?.();
+    }
+  };
+
+  const processedContent = !isUser && message.content
+    ? linkifyCitationMarkers(message.content)
+    : message.content;
 
   return (
     <article
@@ -119,9 +156,42 @@ export function MessageBubble({ message }: { message: ClientMessage }) {
                   }
                   return <CodeBlock className={className}>{children}</CodeBlock>;
                 },
+                a({ href, children, ...props }: any) {
+                  if (href && href.startsWith("#source-")) {
+                    const rawIdx = href.replace("#source-", "");
+                    const idxNum = parseInt(rawIdx, 10);
+                    return (
+                      <button
+                        type="button"
+                        className="citation-ref-btn"
+                        data-source-index={rawIdx}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleJumpToSource(idxNum);
+                        }}
+                        aria-label={`Jump to source citation [${children}]`}
+                        title={`View source [${children}]`}
+                      >
+                        [{children}]
+                      </button>
+                    );
+                  }
+                  const hrefStr = String(href || "");
+                  const isSafe = /^https?:\/\//i.test(hrefStr);
+                  return (
+                    <a
+                      href={isSafe ? hrefStr : "#"}
+                      target={isSafe ? "_blank" : undefined}
+                      rel={isSafe ? "noopener noreferrer" : undefined}
+                      {...props}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
               }}
             >
-              {message.content || (message.status === "streaming" ? "" : "…")}
+              {processedContent || (message.status === "streaming" ? "" : "…")}
             </ReactMarkdown>
           )}
         </div>
@@ -151,7 +221,11 @@ export function MessageBubble({ message }: { message: ClientMessage }) {
 
       {/* Citations - only rendered when grounded and present */}
       {!isUser && groundedState !== "ungrounded" && message.citations.length > 0 && (
-        <Citations citations={message.citations} />
+        <Citations
+          citations={message.citations}
+          messageId={message.id}
+          activeSourceIndex={activeSourceIndex}
+        />
       )}
     </article>
   );

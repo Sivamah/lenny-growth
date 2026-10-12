@@ -21,6 +21,7 @@ class RetrievedChunkModel(BaseModel):
     transcript_slug: str | None = None
     episode_title: str
     guest: str | None = None
+    speaker: str | None = None
     timestamp: str | None = None
     source_url: str | None = None
     chunk_index: int
