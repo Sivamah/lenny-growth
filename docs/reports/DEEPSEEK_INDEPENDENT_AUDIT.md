@@ -1,6 +1,6 @@
 # DEEPSEEK Independent Audit — lenny-growth-assistant-v2
 
-Audited: **2026-10-11** on `D:\oogway project\lenny-growth-assistant-v2`
+Audited: **2026-10-11** on `<workspace-root>`
 
 - Reference (read-only, never modified): `D:\lenny-growth-assistant-main`
 - Environment: Windows; Postgres 16 + pgvector in Docker (`lenny-growth-db`, healthy); Ollama **0.40.2**; tuned model `llama3.2:3b`; embeddings `nomic-embed-text` (768-dim).

@@ -1,6 +1,6 @@
 # Final Submission Readiness Report — lenny-growth-assistant-v2
 
-Verified: **2026-10-11** on `D:\oogway project\lenny-growth-assistant-v2`
+Verified: **2026-10-11** on `<workspace-root>`
 
 This report closes out the server-side content-sanitization change and re-verifies the
 whole stack end-to-end on the live system (not by code inspection alone). It supersedes
@@ -147,7 +147,7 @@ user-visible leak class is fixed and re-verified.**
 - **No secrets exposed.** `INTERNAL_TOKEN` referenced only by length/match, never printed.
   DB password parsed from `.env` at runtime, never echoed.
 - **No repo churn.** Verification harnesses live under
-  `C:\Users\SIVASU~1\AppData\Local\Temp\opencode\` — no project files were added or modified
+  `<temp-dir> — no project files were added or modified
   by this verification pass.
 
 ---

@@ -2,7 +2,7 @@
 
 **Final Verdict:** **FIXED AND VERIFIED**  
 **Date:** October 11, 2026  
-**Project Path:** `D:\oogway project\lenny-growth-assistant-v2`  
+**Project Path:** `<workspace-root>`  
 **Stack:** React 19, TypeScript, Vite, FastAPI (Python 3.12, asyncpg, pgvector), Node.js/TypeScript Agent Service (@google/genai, agent-service runtime), PostgreSQL 17 (pgvector), Ollama (`llama3.2:3b`, `nomic-embed-text:latest`).
 
 ---
